@@ -236,7 +236,8 @@ btnAddToCart.addEventListener("click", async () => {
   /*****--------------add to order----------------*****/
 
   const isOrder = await GetOrderWithUser(userID);
-  const findOrderFalse = isOrder.find((item) => item.user_accept === "false");
+  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+
   let orderId = null;
   if (!findOrderFalse) {
     const data = {
@@ -249,7 +250,7 @@ btnAddToCart.addEventListener("click", async () => {
     window.localStorage.setItem("orderId", JSON.stringify(orderId));
     const product = {
       order_id: orderId,
-      discount: discount,
+      discount: 0,
       product_id: rrr,
       count: 1,
       type: "true",
@@ -311,7 +312,8 @@ btnDelete.addEventListener("click", () => {
 const userID = await userId();
 window.addToCartTheme = async (id) => {
   const isOrder = await GetOrderWithUser(userID);
-  const findOrderFalse = isOrder.find((item) => item.user_accept === "false");
+  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+
   let orderId = null;
   if (!findOrderFalse) {
     const data = {

@@ -8,7 +8,7 @@ import {
   userId,
   getUserWithId,
   validateLogin,
-  GetProductWithId,
+  getPackageWithId,
 } from "./api.js";
 await validateLogin();
 
@@ -160,13 +160,21 @@ const userID = await userId();
 const renderPage = async () => {
   
   const allOrders = await GetOrderWithUser(+userID);
-  const noPayment = allOrders.filter(item => item.user_accept === "false")
+  const noPayment = allOrders.filter(item => item.user_accept === "false" && item.isDelete === "false")
   const contentTotalPrice = document.querySelector("#total-price");
+  
+  
+
   noPayment.forEach(async(item , index) => {
     const productList = await GetAllProductList(+item.id);
-    console.log(productList)
-    const product = await GetProductWithId(66)
-    console.log(product)
+    // if(noPayment[0].type === "package"){
+    //   const product = await getPackageWithId(+productList[0].product_id)
+    //   console.log(product)
+    //   contentTotalPrice.innerHTML = product[0].Deposit;
+    //   document.querySelector("#result-2").innerHTML = `${product[0].Deposit}  تومان`;
+    //   return;
+    // }
+
     contentTotalPrice.innerHTML = totalPriceOrder(productList).totalS;
     document.querySelector("#result-2").innerHTML = `${totalPriceOrder(productList).totalS}  تومان`;
   })

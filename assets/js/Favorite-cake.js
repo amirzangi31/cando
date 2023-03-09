@@ -175,6 +175,7 @@ btnSend.addEventListener("click", async () => {
     .from(dateValue, "fa", "YYYY/MM/DD")
     .locale("en")
     .format("YYYY/MM/DD");
+    console.log(date)
   const data = {
     pakage_id: pakageId,
     image: imageUrl,
@@ -200,7 +201,8 @@ btnSend.addEventListener("click", async () => {
   /*****--------------add to order----------------*****/
 
   const isOrder = await GetOrderWithUser(userID);
-  const findOrderFalse = isOrder.find((item) => item.user_accept === "false");
+  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+
   let orderId = null;
   if (!findOrderFalse) {
     const data = {

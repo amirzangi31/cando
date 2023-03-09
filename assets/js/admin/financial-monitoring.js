@@ -2,7 +2,7 @@ import { GetAllProductList, getAllOrders, getUserWithId, totalPriceOrder } from 
 
 /*---------------render page------------------*/
 const allOrders = await getAllOrders();
-const filterOrder = allOrders.filter(item => item.user_accept === "true")
+const filterOrder = allOrders.filter(item => item.user_accept === "true" && item.isDelete === "false")
 
 
 const renderPage = async () => {
@@ -12,7 +12,10 @@ const renderPage = async () => {
 
     const products = await GetAllProductList(item.id)
     const user = await getUserWithId(item.user_id)
-
+    const date = item.created.split(" ")[0];
+    const resultDate = moment(date, "YYYY/MM/DD")
+      .locale("fa")
+      .format("YYYY/MM/DD");
     const {name , phone} = user[0]
 
         const note = `<div class="col-12 col-md-6 p-2">
@@ -26,7 +29,7 @@ const renderPage = async () => {
                 <div class="date col-12">
                     <span class="px-1">تاریخ و ساعت:15:50:40</span>
                     
-                    <span>${moment("2023-2-22 15:50:40", 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</span>
+                    <span>${resultDate}</span>
                 </div>
                 
 

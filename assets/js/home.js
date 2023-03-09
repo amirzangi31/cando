@@ -317,12 +317,14 @@ overalyModals.forEach((item, index) => {
 const userID = await userId();
 window.addToCart = async (id, discount) => {
   const isOrder = await GetOrderWithUser(userID);
-  const findOrderFalse = isOrder.find((item) => item.user_accept === "false");
+  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+  console.log(findOrderFalse)
   let orderId = null;
   if (!findOrderFalse) {
     const data = {
       user_id: userID,
       discount_id: 0,
+      status : 0,
       user_accept: false,
       admin_accept: false,
     };

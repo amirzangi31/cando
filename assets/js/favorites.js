@@ -64,7 +64,8 @@ await renderPage();
 
 window.addToOrder = async (id) => {
   const isOrder = await GetOrderWithUser(userID);
-  const findOrderFalse = isOrder.find((item) => item.user_accept === "false");
+  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+
   let orderId = null;
   if (!findOrderFalse) {
     const data = {

@@ -1,18 +1,22 @@
-import { convertDate, packageHandler } from "../Services.js";
+import { packageHandler } from "../Services.js";
 import {
   BASE_IAMGE,
+  GetOrderWithUser,
+  InsertOrder,
   confirmPackage,
+  createProduct,
   getAddressWithId,
   getAllDeposit,
   getAllPackage,
   getUserWithId,
+  insertProductToOrder,
 } from "../api.js";
 
 /*--------------render page------------------*/
 const getAllPackageo = await getAllPackage();
 const allPackage = getAllPackageo.filter((item) => item.accept === "false");
-const cakes = allPackage.filter((item) => item.type === "cake");
-const pakages = allPackage.filter((item) => item.type === "pakage");
+const cakes = allPackage.filter((item) => item.type === "cake" && item.pay === "true");
+const pakages = allPackage.filter((item) => item.type === "pakage" && item.pay === "true");
 
 /**گرفتن تمام بیعانه ها */
 const allDeposit = await getAllDeposit();
@@ -30,7 +34,7 @@ const renderPage = async () => {
     const resultDate = moment(date, "YYYY/MM/DD")
       .locale("fa")
       .format("YYYY/MM/DD");
-
+    const type = "cake"
     const note = `
     <div class="content-modals modal-takhmin">
             <div class="inner-modals"  style="z-index : -1">
@@ -75,7 +79,7 @@ const renderPage = async () => {
                               <div class="col-12">
                                 <sapn class="btn text-white btn-sm w-100" style="background : #cd9b38" onclick="priceHandler(${
                                   item.id
-                                })">آماد سازی و ثبت قیمت</sapn>
+                                } , ${user[0].id}  )">آماد سازی و ثبت قیمت</sapn>
                               </div>
                           </div>
                       </div>
@@ -282,9 +286,9 @@ const renderPage = async () => {
                           </div>
                       </div>
                       <div class="col-12">
-                        <sapn class="btn text-white btn-sm w-100" style="background : #cd9b38" onclick="priceHandler(${
+                        <sapn class="btn text-white btn-sm w-100" style="background : #cd9b38" onclick="priceHandlerOne(${
                           item.id
-                        })">آماد سازی و ثبت قیمت</sapn>
+                        }, ${user[0].id} )">آماد سازی و ثبت قیمت</sapn>
                       </div>
                   </div>
               </div>
@@ -423,9 +427,140 @@ window.closeHandlerOne = (index) => {
 
 /*-----------------modalHandler and closeHandler-------------------- */
 
+
+
+
+
 /*-----------------priceHandler -------------------- */
-window.priceHandler = async (id) => {
+window.priceHandler = async (id , user , type) => {
+    
   await confirmPackage(id);
-  window.location.reload();
+
+  const all = await getAllPackage() 
+  const pa = all.filter(item => item.id == id)
+  const {image , description, Deposit} = pa[0]
+
+
+  /****--------------add to products----------------****/
+  const dataOne = {
+    title: "کیک تولد",
+    image: image,
+    count: 1,
+    price: Deposit,
+    description: description,
+    category_id: 0,
+    discount: 0,
+    wallet: 100,
+    type: "bayane",
+  };
+  
+  const rrr = await createProduct(dataOne);
+  /*****--------------add to products----------------*****/
+  
+  const isOrder = await GetOrderWithUser(user);
+  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+
+
+  let orderId = null;
+  if (!findOrderFalse) {
+    const data = {
+      user_id: user,
+      discount_id: 0,
+      user_accept: false,
+      admin_accept: false,
+    };
+    orderId = await InsertOrder(data);
+    window.localStorage.setItem("orderId", JSON.stringify(orderId));
+    const product = {
+      order_id: orderId,
+      discount: 0,
+      product_id: rrr,
+      count: 1,
+      type: "true",
+    };
+    await insertProductToOrder(product);
+    // successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
+  } else {
+    const orderId = findOrderFalse.id;
+    
+    const product = {
+      order_id: orderId,
+      discount: 0,
+      product_id: rrr,
+      count: 1,
+      type: "true",
+    };
+    await insertProductToOrder(product);
+    // successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
+  }
+
+//   window.location.reload();
 };
 /*-----------------priceHandler -------------------- */
+
+/*-----------------priceHandlerOne -------------------- */
+window.priceHandlerOne = async (id , user , type) => {
+    
+    await confirmPackage(id);
+  
+    const all = await getAllPackage() 
+    const pa = all.filter(item => item.id == id)
+    const { Deposit} = pa[0]
+  
+  
+    /****--------------add to products----------------****/
+    const dataOne = {
+        title: "جعبه دلخواه",
+        image: "",
+        count: 1,
+        price: Deposit,
+        description: "",
+        category_id: 0,
+        discount: 0,
+        wallet: 100,
+        type: "bayane",
+    };
+    
+    const rrr = await createProduct(dataOne);
+    /*****--------------add to products----------------*****/
+    
+    const isOrder = await GetOrderWithUser(user);
+    const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+  
+  
+    let orderId = null;
+    if (!findOrderFalse) {
+      const data = {
+        user_id: user,
+        discount_id: 0,
+        user_accept: false,
+        admin_accept: false,
+      };
+      orderId = await InsertOrder(data);
+      window.localStorage.setItem("orderId", JSON.stringify(orderId));
+      const product = {
+        order_id: orderId,
+        discount: 0,
+        product_id: rrr,
+        count: 1,
+        type: "true",
+      };
+      await insertProductToOrder(product);
+      // successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
+    } else {
+      const orderId = findOrderFalse.id;
+      
+      const product = {
+        order_id: orderId,
+        discount: 0,
+        product_id: rrr,
+        count: 1,
+        type: "true",
+      };
+      await insertProductToOrder(product);
+      // successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
+    }
+  
+  //   window.location.reload();
+  };
+/*-----------------priceHandlerOne -------------------- */

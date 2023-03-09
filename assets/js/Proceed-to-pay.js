@@ -6,6 +6,7 @@ import {
   GetOrderWithUser,
   getAddressWithId,
   getAllDeposit,
+  getPackageWithId,
   totalPriceOrder,
   userId,
   validateLogin,
@@ -13,10 +14,10 @@ import {
 await validateLogin();
 
 /*-----------------render page-------------------*/
+const userID = await userId();
+const allOrders = await GetOrderWithUser(+userID);
+const noPayment = allOrders.filter((item) => item.user_accept === "false"&& item.isDelete === "false");
 const renderPage = async () => {
-  const userID = await userId();
-  const allOrders = await GetOrderWithUser(+userID);
-  const noPayment = allOrders.filter((item) => item.user_accept === "false");
   const containerProducts = document.querySelector("#products");
 
   const contentTotalPrice = document.querySelector("#all-price");
@@ -28,15 +29,17 @@ const renderPage = async () => {
 
   noPayment.forEach(async (item, index) => {
     const productList = await GetAllProductList(+item.id);
+   
+    
     productList.forEach((item) => {
+      const price = +item.price
       const note = `
          <div class="col-12 col-md-6 p-1">
          <div class=" py-1 px-2 content-up-page-item border rounded-1">
-         
          <img src="${BASE_IAMGE}${item.image}" style="width : 100px ; height : 100px" /> 
         <div class="d-flex justify-content-between align-items-center flex-column">
           <span>${item.name}</span>
-          <span>${item.price}تومان</span>
+          <span>${price.toLocaleString()}تومان</span>
         </div> 
         <div class="d-flex align-items-center">
         <span>تعداد : ${item.count} </span>

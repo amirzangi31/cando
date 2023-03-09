@@ -204,6 +204,12 @@ const getWithIdPackage = async (id) => {
   return res.data;
 };
 
+const getPackageWithId = async (id) => {
+  const res = await axios(`${BASE_URL}pakage/GetWithIdPakage.php?id=${id}`);
+
+  return res.data;
+};
+
 //UPLOAD IMAGE
 const uploadImage = async (input) => {
   const form = new FormData();
@@ -299,11 +305,10 @@ const updateCount = async (id, dataf) => {
   return res.data;
 };
 
-const getAllFavorite = async() =>{
-  const res =await axios(`${BASE_URL}favorite/GetAll.php`)
-  return res.data
-}
-
+const getAllFavorite = async () => {
+  const res = await axios(`${BASE_URL}favorite/GetAll.php`);
+  return res.data;
+};
 
 const addFavorite = async (id, data) => {
   const res = await axios.post(`${BASE_URL}Favorite/insert.php?id=${id}`, data);
@@ -373,14 +378,11 @@ const addOprator = async (data) => {
   return res.data;
 };
 
-const adminWithToken = async(data) =>{
-  const res = await axios(`${BASE_URL}admin/GetWithToken.php?token=${data}`)
+const adminWithToken = async (data) => {
+  const res = await axios(`${BASE_URL}admin/GetWithToken.php?token=${data}`);
 
-  return res.data
-}
-
-
-
+  return res.data;
+};
 
 const LoginAdmin = async (data) => {
   const res = await axios.post(`${BASE_URL}admin/Login.php`, data);
@@ -414,29 +416,45 @@ const getAllOprator = async () => {
   return res.data;
 };
 
+const deleteFavorite = async (id) => {
+  const res = await axios.delete(`${BASE_URL}favorite/delete.php?id=${id}`);
 
-const deleteFavorite = async(id) =>{
-  const res = await axios.delete(`${BASE_URL}favorite/delete.php?id=${id}`)
+  return res.data;
+};
 
-  return res.data
-}
-
-const confirmPackage = async(id) => {
+const confirmPackage = async (id) => {
   const data = {
-    id 
-  }
+    id,
+  };
 
-  const res = await axios.post(`${BASE_URL}pakage/UpdateAcceptPakage.php`, data)
-  console.log(res.data)
-  return res.data
+  const res = await axios.post(
+    `${BASE_URL}pakage/UpdateAcceptPakage.php`,
+    data
+  );
+  console.log(res.data);
+  return res.data;
+};
 
+const deleteOrder = async (id) => {
+  const data = { id };
+  const res = await axios.post(`${BASE_URL}order/delete.php?id=${id}`, data);
+  return res.data;
+};
 
-
-}
-
-
+const acceptAdminOrder = async (id) => {
+  const data = {
+    id,
+    isAccept: "true",
+  };
+  const res = await axios.post(`${BASE_URL}order/UpdateAccept.php`, data);
+  
+  return res.data;
+};
 
 export {
+  acceptAdminOrder,
+  deleteOrder,
+  getPackageWithId,
   confirmPackage,
   deleteFavorite,
   getAllOprator,
@@ -510,5 +528,5 @@ export {
   updateWallet,
   getAllWallet,
   getAllFavorite,
-  adminWithToken
+  adminWithToken,
 };
