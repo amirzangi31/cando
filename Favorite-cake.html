@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>کیک دلخواه</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./assets/vendors/bootstrap.min.css" />
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="./assets/vendors/swiper.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./assets/styles/Favorite-cake.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="./assets/static/css/lib/persian-datepicker.min.css"
+    />
+    <link rel="stylesheet" href="./assets/static/css/main.css" />
+    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+
+  </head>
+
+  <body class="bg">
+    <!-- START Header favorite-cake-->
+    <div class="container-fluid container-admin" style="position: relative">
+      <header class="header-m-oprator">
+        <div class="title">
+          <span class="back"
+            ><img src="./assets/images/icon/Group 1900.png" alt="icon"
+          /></span>
+          <h5>کیک تصویری و طرح دلخواه</h5>
+        </div>
+        <div class="The-dividing-line"></div>
+      </header>
+      <!--Edn Header favorite-cake-->
+
+      <!-- START MENU-BOTTOM -->
+      <div class="menu-bottom">
+        <ul class="list-bottom">
+          <li class="item-bottom">
+            <a href="profile.html">
+              <img src="./assets/images/icon/users.png" alt="icon" />
+            </a>
+          </li>
+          <li class="item-bottom">
+            <a href="index.html">
+              <img src="./assets/images/icon/home.png" alt="icon" />
+            </a>
+          </li>
+          <li class="item-bottom">
+            <a href="basket-shoping.html">
+              <img src="./assets/images/icon/Bag.png" alt="icon" />
+            </a>
+          </li>
+          <li class="item-bottom">
+            <a href="instruction.html">
+              <img src="./assets/images/icon/hat.png" alt="icon" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- END MENU-BOTTOM -->
+
+      <!-- START MAIN -->
+      <main class="main p-3">
+        <!-- start content -->
+        <section class="image-cake">
+          <!-- start -->
+          <div class="col-12 col-md-4 order-type py-1">
+            <label>نوع سفارش</label>
+            <select class="my-2" name="Order-type" id="type">
+              <option value="سفارش از روی مدل">سفارش از روی مدل</option>
+              <option value="چاپ عکس از روی کیک">چاپ عکس از روی کیک</option>
+            </select>
+          </div>
+          <div class="col-12 image py-1">
+            <div class="col-12 col-md-6 name-taste py-1">
+              <label class="p-1">طعم اسفنج</label>
+              <div class="image-content col-12">
+                <div class="image-taste col-2 p-1 active" id="esfang-div" data-image="وانیل">
+                  <div class="img" id="esfang-img">
+                    <img src="./assets/images/vanil.png" />
+                  </div>
+                  <div class="وانیل">وانیل</div>
+                </div>
+                <div class="image-taste col-2 p-1 " id="esfang-div" data-image="شکلات">
+                  <div class="img active" id="esfang-img">
+                    <img src="./assets/images/chocolate.png" />
+                  </div>
+                  <div class="شکلات">شکلات</div>
+                </div>
+                <div class="image-taste col-2 p-1" id="esfang-div" data-image="رد ولوت">
+                  <div class="img" id="esfang-img">
+                    <img class="bb" src="./assets/images/radolot.png" />
+                  </div>
+                  <div class="رد ولوت">رد ولوت</div>
+                </div>
+                <div class="image-taste col-2 p-1" id="esfang-div" data-image="نسکافه">
+                  <div class="img" id="esfang-img">
+                    <img src="./assets/images/neskafe.png" />
+                  </div>
+                  <div class="نسکافه">نسکافه</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 name-taste py-1">
+              <label class="p-1">فیلینگ کیک(لایه میانی)</label>
+              <div class="image-content col-12">
+                <div class="image-taste col-2 p-1 active" id="filing-div" data-image="آناناس و گردو">
+                  <div class="img active" id="filing-img">
+                    <img src="./assets/images/ananas.png" />
+                  </div>
+                  <div class="آناناس و گردو">آناناس و گردو</div>
+                </div>
+                <div class="image-taste col-2 p-1" id="filing-div" data-image="موز و گردو">
+                  <div class="img" id="filing-img">
+                    <img src="./assets/images/banana.png" />
+                  </div>
+                  <div class="موز و گردو">موز و گردو</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 name-taste py-1">
+              <label class="p-1">طعم خامه</label>
+              <div class="image-content col-12">
+                <div class="image-taste col-2 p-1 cream-div active"  data-image="وانیل">
+                    <div class="img cream-img active">
+                      <img src="./assets/images/vanil.png" />
+                    </div>
+                    <div class="وانیل">وانیل</div>
+                  </div>
+                  <div class="image-taste col-2 p-1 cream-div "  data-image="شکلات">
+                    <div class="img  cream-img">
+                      <img src="./assets/images/chocolate.png" />
+                    </div>
+                    <div class="شکلات">شکلات</div>
+                  </div>
+                  
+                  <div class="image-taste col-2 p-1 cream-div"  data-image="نسکافه">
+                    <div class="img cream-img">
+                      <img src="./assets/images/neskafe.png" />
+                    </div>
+                    <div class="نسکافه">نسکافه</div>
+                  </div>
+                  <div class="image-taste col-2 p-1 cream-div"  data-image="ردولوت">
+                    <div class="img cream-img">
+                      <img class="bb" src="./assets/images/radolot.png" />
+                    </div>
+                    <div class="ردولوت">رد ولوت</div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 date-tasvir py-1">
+            <div class="col-12 col-md-8 date-content">
+              <div class="col-6 date p-1">
+                <label for="persianDatapicker">تاریخ دریافت</label>
+                <input
+                  type="text "
+                  name="persianDatapicker"
+                  id="persianDatapicker"
+                />
+              </div>
+              <div class="col-6 time p-1">
+                <label>ساعت دریافت</label>
+                <div class="col-12 content-time">
+                  <input
+                    class="col-4 mx-1"
+                    type="text"
+                    name="time"
+                    id="times"
+                    placeholder="ساعت"
+                  />
+                  <span class="m-1">:</span>
+                  <input
+                    class="col-4 mx-1"
+                    type="text"
+                    name="minute"
+                    id="minutes"
+                    placeholder="دقیقه"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 tasvir-content">
+              <div class="tasvir p-1">
+                <label>تصویر</label>
+                <input type="file" name="file" id="imgfile" />
+              </div>
+            </div>
+          </div>
+          <div class="col-12 ranges py-1">
+            <div class="col-12 col-md-6 p-2 ranges-content">
+              <label>میزان خامه</label>
+              <div class="range-item col-12">
+                <div class="col-12 select-range">
+                  <input
+                    type="range"
+                    id="amount-cream"
+                    name="cream"
+                    list="amount"
+                    step="50"
+                  />
+                  <datalist id="amount">
+                    <option value="0" label="کم"></option>
+                    <option value="50" label="متوسط"></option>
+                    <option value="100" label="زیاد"></option>
+                  </datalist>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 p-2 ranges-content">
+              <label>وزن کیک(کیلوگرم)</label>
+              <div class="range-item col-12">
+                <div class="col-12 select-range">
+                  <input
+                    type="range"
+                    id="cake-weight"
+                    name="weight"
+                    list="wlist"
+                    step="11"
+                  />
+                  <datalist id="wlist">
+                    <option value="2" label="2"></option>
+                    <option value="3" label="3"></option>
+                    <option value="4" label="4"></option>
+                    <option value="5" label="5"></option>
+                    <option value="6" label="6"></option>
+                    <option value="7" label="7"></option>
+                    <option value="8" label="8"></option>
+                    <option value="9" label="9"></option>
+                    <option value="10" label="10"></option>
+                    <option value="11" label="بالای10"></option>
+                  </datalist>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 information py-1">
+            <div class="col-12 col-md-6 p-2">
+              <input
+                type="text"
+                name="writing-on-cake"
+                id="writing-cake"
+                placeholder="نوشته روی کیک"
+              />
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <textarea
+                class="des text-white"
+                rows="3"
+                name="description-value"
+                id="description"
+                placeholder="توضیحات"
+              ></textarea>
+            </div>
+          </div>
+        </section>
+        <!-- start btn bottom -->
+        <div class="btn-main col-12 active" id="new-birth-btn">
+          <div class="btn-main-content">
+            <p class="mb-0 me-1">درخواست سفارش</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="./assets/vendors/bootstrap.min.js"></script>
+
+    <!-- MAIN JS -->
+
+    <script src="./assets/static/js/lib/jquery-3.2.1.min.js"></script>
+    <script src="./assets/static/js/lib/persian-date.min.js"></script>
+    <script src="./assets/static/js/lib/persian-datepicker.min.js"></script>
+    <script src="./assets/static/js/app.js"></script>
+    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+
+<!-- SWEETALERT PACKAGE -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/js/Favorite-cake.js" type="module"></script>
+  </body>
+</html>

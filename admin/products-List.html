@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تعریف پکیج تولد</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="../assets/vendors/bootstrap.min.css" />
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="../assets/vendors/swiper.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../assets/styles/products-List.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body class="bg">
+    <div id="container-modal">
+      <div class="content-modal" id="modal-products-list">
+        <div class="inner-modal">
+          <div class="content">
+            <form class="px-4 pt-2">
+              <div class="uplode-image mx-4 my-2">
+                <span>
+                  <img src="../assets/images/plus.png" />
+                </span>
+                <p class="mb-0">
+                  عکس را<br />
+                  اضافه کنید
+                </p>
+              </div>
+              <div class="col-12 px-4 py-2">
+                <input
+                  class="form-control"
+                  name="package"
+                  id="package-name"
+                  type="text"
+                  placeholder="نام محصول"
+                  aria-label=".form-control-lg example"
+                />
+              </div>
+              <div class="col-12 px-4 py-2">
+                <textarea
+                  class="description-textarea"
+                  cols="50"
+                  rows="4"
+                  placeholder="توضیحات"
+                ></textarea>
+              </div>
+              <div class="col-12 px-4 py-2">
+                <input
+                  class="form-control"
+                  name="value-price"
+                  id="price"
+                  type="text"
+                  placeholder="قیمت هر کیلو"
+                  aria-label=".form-control-lg example"
+                />
+              </div>
+              <div class="col-12 px-4 py-2">
+                <input
+                  class="form-control"
+                  name="value-wholesale"
+                  id="wholesale-price"
+                  type="text"
+                  placeholder="قیمت عمده"
+                  aria-label=".form-control-lg example"
+                />
+              </div>
+              <div class="col-12 px-4 py-2">
+                <input
+                  class="form-control"
+                  name="value-inventory"
+                  id="inventory-price"
+                  type="text"
+                  placeholder="قیمت موجودی"
+                  aria-label=".form-control-lg example"
+                />
+              </div>
+            </form>
+            <div class="birthday-package mt-2">
+              <p>تعریف کیک جدید</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- START Header products list-->
+    <div class="container-fluid container-admin" style="position: relative">
+      <header class="header-m-oprator">
+        <div class="title">
+          <span class="back"
+            ><img src="../assets/images/icon/Group 1900.png" alt="icon"
+          /></span>
+          <h5>لیست تمام محصولات</h5>
+        </div>
+        <div class="The-dividing-line"></div>
+      </header>
+      <!--Edn Header products list-->
+
+      <!-- START MAIN -->
+      <main class="main p-2">
+        <!-- menu top -->
+        <div class="content-modal-grouping" id="modal-grouping">
+          <div class="inner-modal-grouping" id="inner-modal">
+            <div class="content-grouping">
+             <div class="col-12 p-2 item-grouping">
+              <label>نام</label>
+              <input class="" name="grouping-name" id="input-new-category" type="text">
+             </div>
+            <div class="btn-submit " id="add-category">
+              <p>ثبت</p>
+            </div>
+            </div>
+            
+        
+          </div>
+        
+        </div>
+
+
+       
+        <div id="main-content">
+          <div class="col-12 Grouping">
+            <div class="col-2 group-item mx-1 p-1" id="show-modal-name">
+              <span class="plus">+</span>
+              <span>دسته جدید</span>
+            </div>
+            <div class="w-100 d-flex" id="btn-content"></div>
+          </div>
+          <!-- content main -->
+          <div id="content"></div>
+        </div>
+      </main>
+
+
+   
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="../assets/vendors/bootstrap.min.js"></script>
+
+    <!-- MAIN JS -->
+
+    <script src="../assets/js/admin/products-List.js" type="module"></script>
+  </body>
+</html>

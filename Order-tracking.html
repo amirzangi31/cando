@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>پیگیری سفارش</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./assets/vendors/bootstrap.min.css" />
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./assets/styles/Order-tracking.css" />
+
+ <!--bootstrap for map  -->
+ <link rel="stylesheet" href="./assets/vendors/map/dist/css/mapp.min.css">
+ <link rel="stylesheet" href="./assets/vendors/map/dist/css/fa/style.css">
+
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body class="">
+      <!-- START MAIN -->
+      <main class="main">
+        <!-- start -->
+      
+        <div class="map-content">
+          <div id="app"></div>
+        </div>
+    
+          
+      <div class="btn-bottom ">
+        <div class="btn-bottom-content " >
+          <div class="col-12 image-arrow">
+            <img class="up" src="./assets/images/icon/arrow-up.svg">
+            <img class="down" src="./assets/images/icon/arrow-down.svg">
+
+          </div>
+          <div id="container-follow">
+            <div class="col-12 txt-top p-3"> 
+              <span>زمان تقریبی رسیدن کالا30دقیقه</span>
+              <span style="color: rgb(180, 180, 179);">مرحله خروج از مرکز پردازش</span>
+            </div>
+          
+            <div class="col-12 city p-1">
+             <div class="col-3 images">
+              
+              <div class="col-8 aks">
+                <p class="text-white confirm">confirm</p>
+                <img src="./assets/images/icon/time.png">
+                <span class="py-2 color-span">در صف بررسی</span>
+              </div>
+              <div class="col-4 point">
+                <img src="./assets/images/icon/point.png">
+              </div>
+          
+             </div>
+             <div class="col-3 images">
+              
+              <div class="col-8 aks">
+                <p class="text-white confirm">confirm</p>
+                <i class="bi bi-check-circle checks"></i>
+                <span class="py-2 color-span">تاییدسفارش</span>
+              </div>
+              <div class="col-4 point">
+                <img src="./assets/images/icon/point.png">
+              </div>
+          
+             </div>
+             <div class="col-3 images">
+              
+              <div class="col-8 aks">
+                <p class="text-white confirm">confirm</p>
+                <img src="./assets/images/icon/car.png ">
+                <span class="py-2 color-span">خروج از مرکز سفارش</span>
+              </div>
+              <div class="col-4 point">
+                <img src="./assets/images/icon/pointw.png">
+              </div>
+          
+             </div>
+             <div class="col-3 images">
+              
+              <div class="col-8 aks">
+                <p class="text-white confirm">confirm</p>
+                <img src="./assets/images/icon/box.png">
+                <span class="py-2 colors-span">تحویل به مشتری</span>
+              </div>
+             </div>
+            </div>
+           
+          </div>
+        <div class="col-12  address p-2" id="container">
+            
+        </div>
+        </div>
+          
+      </div>
+
+  
+          
+      </main>
+      
+    <script src="./assets/vendors/map/dist/js/jquery-3.2.1.min.js"></script>
+    <!--BOOTSTRAP -->
+    <script src="./assets/vendors/bootstrap.min.js"></script>
+
+
+
+    <!--js for map  -->
+    <script src="./assets/vendors/map/dist/js/mapp.env.js"></script>
+    <script src="./assets/vendors/map/dist/js/mapp.min.js"></script>
+   
+
+    <!-- MAIN JS -->
+   
+    <script src="./assets/js/Order-tracking.js" type="module"></script>
+  </body>
+</html>

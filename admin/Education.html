@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>آ وزش ها</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="../assets/vendors/bootstrap.min.css" />
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="../assets/vendors/swiper.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../assets/styles/Education.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body class="bg">
+
+     <!-- START content modal Package new education-->
+     <div class="content-modal" id="modal-education-pakage">
+        <div class="inner-modal">
+          <div class="content height-size">
+            <form class="px-4 pt-2">
+              <div class="uplode-image mx-4 my-2">
+                <span>
+                  <img src="../assets/images/plus.png">
+                </span>
+                <label for="image-model" class="mb-0">عکس آموزش را<br> اضافه کنید</label>
+                <input type="file" id="image-model" hidden />
+              </div> 
+            <div class="col-12 px-4 py-2 ">
+              <input class="form-control  " type="text" name="amozesh" id="title-a" placeholder="موضوع آموزش" aria-label=".form-control-lg example">
+            </div>
+            <div class="col-12 px-4 py-2 ">
+                <input class="form-control " type="text" name="mavad" id="mavad"  placeholder="مواد اولیه" aria-label=".form-control-lg example">
+              </div>
+              <div class="col-12 px-4 py-2 ">
+                <input class="form-control " type="text" name="zaman" id="time" placeholder="زمان (دقیقه)" aria-label=".form-control-lg example">
+              </div>
+            <div class="col-12  px-4 py-2">
+              <select name="brand" id="brand-mobile">
+                <option value="apple">میزان سختی</option>
+              </select>
+          </div>
+              <div class="col-12 px-4 py-2 ">
+                <textarea class="description-textarea " cols="50" rows="7" id="des-a"  placeholder="دستور پخت"></textarea>
+              </div>
+              <div class="col-12 px-4 py-2 ">
+                <div class="desired-package" onclick="validate()">
+                  <label>پکیج دلخواه</label>
+                  <label class="btn-package-desired">
+                      <input class="inpute-checkbox" type="checkbox" id="check-input">
+                      <span class="circle-in" id="small-circle"></span>
+                      <span class="circle-out" id="circle-bironi"></span>
+              
+                  </label>
+              </div>
+              </div>
+              <div class="col-12" id="package-delkhah" style="display: none;">
+                <div class="col-12  px-4 py-2 " >
+                  <select name="equipment" id="Equipment">
+                    <option value="funnel">قیف</option>
+                    <option value="cake-powder">پودر کیک</option>
+                  </select>
+                 </div>
+        
+                  <div class="col-12 px-4 py-2  ">
+                    <input class="form-control " type="text" placeholder="قیمت (تومان)" aria-label=".form-control-lg example">
+                  </div>
+              </div>
+          </form>
+          <div class="birthday-package mt-2" id="btn-amozesh">
+            <p>تعریف آموزش جدید</p>
+          </div>
+          </div>
+          
+  
+        </div>
+  
+      </div>
+ <!-- End content modal Package education-->
+
+  <!-- START content modal  pakage new Article-->
+  <div class="content-modal" id="modal-add-Article">
+    <div class="inner-modal">
+      <div class="content">
+        <form class="px-4 pt-2">
+            <div class="uplode-image mx-4 my-2">
+                <span>
+                  <img src="../assets/images/plus.png">
+                </span>
+                <label for="modal-image-m" class="mb-0">عکس مقاله را<br> اضافه کنید</label>
+
+                <input type="file" id="modal-image-m" hidden>
+              </div>
+          <div class="col-12 px-4 py-2 ">
+            <input class="form-control " type="text" name="maghale" id="title-m" placeholder="موضوع مقاله" aria-label=".form-control-lg example">
+          </div>
+          <div class="col-12 px-4 py-2 ">
+            <textarea class="description-textarea " cols="50" rows="7" id="des-m" placeholder="توضیحات"></textarea>
+          </div>
+
+      </form>
+      <div class="birthday-package mt-2" id="btn-maghaleh">
+        <p>تعریف مقاله جدید</p>
+      </div>
+      </div>
+    </div>
+
+  </div>
+<!-- End content modal  pakage new Article-->
+
+
+
+
+
+
+     <!-- START Header Package education and Article-->
+    <div class="container-fluid container-admin" style="position:relative ;">
+      <header class="header-m-oprator">
+        <div class="title">
+          <span class="back"><img src="../assets/images/icon/Group 1900.png"
+              alt="icon"
+              /></span>
+          <h5>مقالات و آموزش ها</h5>
+        </div>
+        <div class="The-dividing-line"></div>
+      </header>
+<!--Edn Header Package education and Article-->
+
+      <!-- START MAIN -->
+      <main class="main">
+          <!-- START BTNS  -->
+          <div class="btns">
+            <div class="btn-change col-6 text-center active">آموزش ها</div>
+            <div class="btn-change col-6 text-center ">مقاله ها</div>
+          </div>
+          <!-- END BTNS  -->
+           <!-- start content pakage education -->
+           <div class="content-pakage active">
+            <section class="category-product w-100" id="content-amozesh">
+              <!-- start -->
+              
+              
+            </section>
+            <!-- start btn bottom -->
+            <div class="btn-main col-12 " id="new-education-btn">
+              <div class="btn-main-content">
+               <span>
+                 <img src="../assets/images/plus1.png">
+               </span>
+               <p class="mb-0 me-1">آموزش جدید</p>
+ 
+              </div>
+               
+             </div>
+          </div>
+            <!-- END content pakage education -->
+
+            <!-- Start content pakage Article -->
+          <div class="content-pakage">
+            <section class="category-product w-100" id="content-maghaleh">
+              <!-- start -->
+             
+              
+            </section>
+            <!-- start btn bottom -->
+            <div class="btn-main col-12 " id="new-Article-btn">
+              <div class="btn-main-content">
+               <span>
+                 <img src="../assets/images/plus1.png">
+               </span>
+               <p class="mb-0 me-1">مقاله جدید</p>
+ 
+              </div>
+               
+             </div>
+          </div>
+             <!-- End content pakage Article -->
+      </main>
+
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="../assets/vendors/bootstrap.min.js"></script>
+
+    <!-- MAIN JS -->
+   
+    <!-- <script src="../assets/js/admin/Education.js" type="module"></script> -->
+    <script src="../assets/js/admin/Education.js" type="module"> </script>
+  </body>
+</html>

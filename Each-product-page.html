@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>صفحه هر محصول</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./assets/vendors/bootstrap.min.css" />
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="./assets/vendors/swiper.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./assets/styles/Each-product-page.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
+
+
+  </head>
+
+  <body>
+
+    
+
+     <!-- START Header each-product-page-->
+    <div class="container-fluid container-admin" style="position:relative ;">
+      
+<!--Edn Header each-product-page-->
+  <!-- START MENU-BOTTOM -->
+  <div class="menu-bottom">
+    <ul class="list-bottom">
+      <li class="item-bottom ">
+        <a href="profile.html">
+          <img src="./assets/images/icon/users.png" alt="icon" />
+        </a>
+      </li>
+      <li class="item-bottom ">
+        <a href="index.html">
+          <img src="./assets/images/icon/home.png" alt="icon" />
+        </a>
+      </li>
+      <li class="item-bottom">
+        <a href="basket-shoping.html">
+          <img src="./assets/images/icon/Bag.png" alt="icon" />
+        </a>
+      </li>
+      <li class="item-bottom">
+        <a href="instruction.html">
+          <img src="./assets/images/icon/hat.png" alt="icon" />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- END MENU-BOTTOM -->
+    
+      <!-- START MAIN -->
+      <main class="main p-3">
+        <!-- start section-top -->
+        <section class="section-top ">
+            <div class="content-section" id="header">
+                
+            </div>
+           
+
+        </section>
+        <!-- end section-top -->
+
+        <!-- start section-bottom -->
+        <section class="section-bottom">
+          <div class="content-section-b">
+              <div class="top-head">
+                  <div class="col-4 text top-arrows ">
+                      <!-- <img src="./assets/images/icon/fff.svg"class="arrows active"> -->
+                      <div class="xx active">
+                          <span>فیلینگ</span>
+                      </div>
+                    
+                  </div>
+                  <div class="col-4 text top-arrows">
+                      <!-- <img src="./assets/images/icon/fff.svg"class="arrows"> -->
+                      <span>اسفنج کیک</span>
+                  </div>
+                  <div class="col-4 text top-arrows">
+                      <!-- <img src="./assets/images/icon/fff.svg"class="arrows"> -->
+                      <span>طعم خامه</span>
+                  </div>
+
+
+
+              </div>
+              <div class="second-sec">
+                  <div class="swiper py-1 active" id="myswiper">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/vanil.png">
+                              </div>
+                              <div class="Ntaste">
+                                  وانیل
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/chocolate.png">
+                              </div>
+                              <div class="Ntaste">
+                                  شکلات
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/radolot.png">
+                              </div>
+                              <div class="Ntaste">
+                                  رد ولوت
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/neskafe.png">
+                              </div>
+                              <div class="Ntaste">
+                                  نسکافه
+                              </div>
+      
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                          <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+                          <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+                          <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span>
+                      </div>
+                  </div>
+                  <div class="swiper py-1" id="myswiper">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/vanil.png">
+                              </div>
+                              <div class="Ntaste">
+                                  وانیل
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/chocolate.png">
+                              </div>
+                              <div class="Ntaste">
+                                  شکلات
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/radolot.png">
+                              </div>
+                              <div class="Ntaste">
+                                  رد ولوت
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/neskafe.png">
+                              </div>
+                              <div class="Ntaste">
+                                  نسکافه
+                              </div>
+      
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                          <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+                          <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+                          <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span>
+                      </div>
+                  </div>
+                  <div class="swiper py-1" id="myswiper">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/vanil.png">
+                              </div>
+                              <div class="Ntaste">
+                                وانیل
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/chocolate.png">
+                              </div>
+                              <div class="Ntaste">
+                                  شکلات
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/radolot.png">
+                              </div>
+                              <div class="Ntaste">
+                                  رد ولوت
+                              </div>
+      
+                          </div>
+                        </div>
+                        <div class="swiper-slide">
+                          <div class="image-taste col-6 p-1">
+                              <div class="img">
+                                  <img src="./assets/images/neskafe.png">
+                              </div>
+                              <div class="Ntaste">
+                                  نسکافه
+                              </div>
+      
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+                          <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+                          <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
+                          <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span>
+                      </div>
+                  </div>
+                  <div class="down">
+                      <div class="col-12 ranges py-1">
+                          <div class="col-12 col-md-6 p-2 ranges-content">
+                              <label>میزان خامه</label>
+                              <div class="range-item col-12">
+                                  <div class="col-12 select-range">
+                                      <input disabled type="range" id="amount-cream" name="cream"list="amount" step="50">
+                                      <datalist id="amount">
+                                          <option value="0" label="کم"></option>
+                                          <option value="50" label="متوسط"></option>
+                                          <option value="100" label="زیاد"></option>
+                                      </datalist>
+                                  </div>
+                              </div>
+          
+                          </div>
+                          <div class="col-12 col-md-6 p-2 ranges-content">
+                              <label>وزن کیک(کیلوگرم)</label>
+                              <div class="range-item col-12">
+                                  <div class="col-12 select-range">
+                                      <input disabled type="range"  id="cake-weight" name="weight" list="wlist" step="11">
+                                      <datalist id="wlist">
+                                          <option value="2" label="2"></option>
+                                          <option value="3" label="3"></option>
+                                          <option value="4" label="4"></option>
+                                          <option value="5" label="5"></option>
+                                          <option value="6" label="6"></option>
+                                          <option value="7" label="7"></option>
+                                          <option value="8" label="8"></option>
+                                          <option value="9" label="9"></option>
+                                          <option value="10" label="10"></option>
+                                          <option value="11" label="بالای10"></option>
+          
+                                      </datalist>
+                                  </div>
+          
+                              </div>
+          
+                          </div>
+                      </div>
+                      <div class="col-12  information py-1">
+                          <div class="col-12 col-md-6 p-2">
+                            
+                            <input disabled  type="text" placeholder="نوشته روی کیک" >
+                        </div>
+                          <div class="col-12 col-md-6 p-2">
+                              <textarea disabled class="des" rows="3" placeholder="توضیحات" ></textarea>
+                          </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="col-12 voting py-1">
+                          <div class="col-12 col-md-6 py-2 voting-item">
+                              <label class="col-3">کیفیت محصول</label>
+                              <input disabled class="col-6" type="range" value="30" >
+                              <label class="col-3 aa">17رای</label>
+  
+                          </div>
+                          <div class="col-12 col-md-6 py-2 voting-item">
+                              <label class="col-3">بسته بندی</label>
+                              <input disabled class="col-6" type="range" value="60" >
+                              <label class="col-3 aa">17رای</label>
+  
+                          </div>
+                          <div class="col-12 col-md-6 py-2 voting-item">
+                              <label class="col-3">ارزش خرید</label>
+                              <input disabled class="col-6" type="range" value="80" >
+                              <label class="col-3 aa">17رای</label>
+  
+                          </div>
+  
+                      </div>
+                      <div class="col-12 comments py-1" id="comment">
+                            
+                             
+                      </div>
+                  </div>
+                  
+
+              </div>
+
+          </div>
+
+          <div class="footer" >
+              <div class="row p-2 footer-item">
+                  <div class="col-5 col-md-2 col-sm-3 btn-bottom" >
+                      <div class=" p-1 text-btn" id="add-to-order">
+                          افزودن به سبد خرید
+                         
+                      </div>
+
+                  </div>
+                  <div class=" col-3 col-md-2 g-0 txt-left" >
+                      <div>
+                          <p>مبلغ بیعانه قابل پرداخت:</p>
+                          <p id="price">120,000تومان</p>
+                      </div>
+                  </div>
+              </div>
+          
+          </div>
+
+      </section>
+
+
+       <!-- end section-bottom -->
+      
+     
+        
+       
+                
+      </main>
+
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="./assets/vendors/bootstrap.min.js"></script>
+    <script src="./assets/vendors/swiper.js"></script>
+<!-- SWEETALERT PACKAGE -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- MAIN JS -->
+   
+    <script src="./assets/js/Each-product-page.js" type="module"></script>
+
+  </body>
+</html>

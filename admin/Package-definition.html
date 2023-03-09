@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تعریف پکیج تولد</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="../assets/vendors/bootstrap.min.css" />
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="../assets/vendors/swiper.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../assets/styles/Package-definition.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body class="bg">
+
+     <!-- START content modal Package definition-->
+    <div class="content-modal" id="modal-newbirth-pakage">
+      <div class="inner-modal">
+        <div class="content">
+          <form class="px-4 pt-2">
+            <div class="uplode-image mx-4 my-2">
+              <span>
+                <img src="../assets/images/plus.png">
+              </span>
+              <label for="image-t" class="mb-0">عکس را<br> اضافه کنید</label>
+              <input type="file" id="image-t" hidden />
+            </div>
+          <div class="col-12 px-4 py-2 ">
+            <input class="form-control" name="package" id="name-t" type="text" placeholder="اسم پکیج" aria-label=".form-control-lg example">
+          </div>
+          <div class="col-12  px-4 py-2">
+            <textarea class="form-control" id="des-t" placeholder="توضیحات" rows="10" cols="30"></textarea>
+          </div>
+
+
+            <div class="col-12 px-4 py-2 ">
+              <input class="form-control " name="value-price" id="price-t" type="text" placeholder="قیمت (تومان)" aria-label=".form-control-lg example">
+            </div>
+
+        </form>
+        <div class="birthday-package mt-2" id="btn-add-theme">
+          <p>تعریف پکیج تولد</p>
+        </div>
+        </div>
+        
+
+      </div>
+
+    </div>
+ <!-- End content modal Package definition-->
+
+  <!-- START content modal  pakage making sweets-->
+  <div class="content-modal" id="modal-making-sweets">
+    <div class="inner-modal">
+      <div class="content">
+        <form class="px-4 pt-2">
+          <div class="uplode-image mx-4 my-2">
+            <span>
+              <img src="../assets/images/plus.png">
+            </span>
+            <label for="image-sh" class="mb-0">عکس را<br> اضافه کنید</label>
+            <input type="file" id="image-sh" hidden />
+          </div>
+        <div class="col-12  px-4 py-2">
+          <input type="text" class="form-control" id="name-sh" placeholder="اسم محصول" id="name-sh">
+      </div>
+        <div class="col-12  px-4 py-2">
+          <textarea class="form-control"  id="des-sh" cols="30" placeholder="توضیحات" rows="10"></textarea>
+         </div>
+
+          <div class="col-12 px-4 py-2 ">
+            <input class="form-control " id="price-sh" type="text" placeholder="قیمت (تومان)" aria-label=".form-control-lg example">
+          </div>
+
+      </form>
+      <div class="birthday-package mt-2" id="btn-add-sh">
+        <p>تعریف پکیج ساخت شیرینی</p>
+      </div>
+      </div>
+    </div>
+
+  </div>
+<!-- End content modal  pakage making sweets-->
+
+
+
+
+
+
+     <!-- START Header Package definition-->
+    <div class="container-fluid container-admin" style="position:relative ;">
+      <header class="header-m-oprator">
+        <div class="title">
+          <span class="back"><img src="../assets/images/icon/Group 1900.png"
+              alt="icon"
+              /></span>
+          <h5>تعریف پکیج</h5>
+        </div>
+        <div class="The-dividing-line"></div>
+      </header>
+<!--Edn Header Package definition-->
+
+      <!-- START MAIN -->
+      <main class="main">
+          <!-- START BTNS  -->
+          <div class="btns">
+            <div class="btn-change col-6 text-center active" id="btn-birth">آماده تولد</div>
+            <div class="btn-change col-6 text-center " id="make-sweet">ساخت شیرینی</div>
+          </div>
+          <!-- END BTNS  -->
+           <!-- start content pakage birthday -->
+          <div class="content-pakage active" >
+            <section class="category-product w-100" id="container-theme">
+              
+              
+            </section>
+            <div class="btn-main col-12 active" id="new-birth-btn">
+              <div class="btn-main-content">
+                <span>
+                  <img src="../assets/images/plus1.png">
+                </span>
+                <p class="mb-0 me-1">پکیج تولد جدید</p>
+
+              </div>
+                
+            </div>
+          </div>
+            <!-- END content pakage birthday -->
+
+            <!-- Start content pakage making sweets -->
+          <div class="content-pakage" id="content-sweet">
+            <section class="category-product w-100" id="container-sh">
+              <!-- start -->
+              
+            
+            </section>
+            <div class="btn-main col-12 " id="new-sweet-btn">
+              <div class="btn-main-content">
+               <span>
+                 <img src="../assets/images/plus1.png">
+               </span>
+               <p class="mb-0 me-1">پکیج ساخت شیرینی جدید</p>
+ 
+              </div>
+               
+             </div>
+          </div>
+             <!-- End content pakage making sweets -->
+      </main>
+
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="../assets/vendors/bootstrap.min.js"></script>
+
+    <!-- MAIN JS -->
+   
+    <script src="../assets/js/admin/Package-definition.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سبد خرید</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./assets/vendors/bootstrap.min.css" />
+
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./assets/styles/basket-shoping.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- start modal Order details -->
+    <div class="content-modal" id="modal-Order-details">
+        <div class="inner-modal">
+          <div class="content">
+            <header class="header-m-oprator">
+                <div class="title">
+                  <span class="back"><img src="./assets/images/black.f.png"
+                      alt="icon"
+                      /></span>
+                  <h6>جزئیات سفارش</h6>
+                </div>
+                <div class="line"></div>
+              </header>
+              <div class="content-price active">
+                <section class="category-price p-1">
+                  <div class="col-12 px-1 py-1">
+                    <div class="price-item ">
+                        <div class="col-12 detail">
+                                <div class="col-12 detail-item p-2">
+                                    <label class=" col-4">کد رهگیری:</label>
+                                    <input class="col-8" type="text" name="code" id="code-rahgiri" placeholder="45880215">
+                                </div>
+                                <div class="col-12 detail-item p-2">
+                                    <label class=" col-4">تاریخ و زمان سفارش:</label>
+                                    <input class="col-8" type="text" name="value-date" id="date-kharid" placeholder="شنبه 23 آبان-9 تا 12 صبح">
+                                </div>
+                                <div class="col-12 detail-item p-2">
+                                    <label class=" col-4">اطلاعات تحویل گیرنده:</label>
+                                    <input class="col-8" type="text" name="value-kharid" id="darsad-kharid" placeholder="نام ونام خانوادگی 09122254545">
+                                </div>
+                                <div class="col-12 detail-item p-2">
+                                    <input class="col-12 adres" type="text" name="value-address" id="address" placeholder="کرمان،نرسیده به بلوار،خیابان فیروزه جنب مطب قهاری،پلاک25">
+                                </div>
+                                
+        
+                        </div>
+                    </div>
+                  </div>
+                </section>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- end modal Order details -->
+
+    <div class="container-fluid container-admin" style="position:relative ;">
+
+ <!-- START MENU-BOTTOM -->
+ <div class="menu-bottom">
+    <ul class="list-bottom">
+      <li class="item-bottom ">
+        <a href="profile.html">
+          <img src="./assets/images/icon/users.png" alt="icon" />
+        </a>
+      </li>
+      <li class="item-bottom ">
+        <a href="index.html">
+          <img src="./assets/images/icon/home.png" alt="icon" />
+        </a>
+      </li>
+      <li class="item-bottom active">
+        <a href="#">
+          <img src="./assets/images/icon/Bag.png" alt="icon" />
+        </a>
+      </li>
+      <li class="item-bottom">
+        <a href="instruction.html">
+          <img src="./assets/images/icon/hat.png" alt="icon" />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- END MENU-BOTTOM -->
+
+      <!-- START MAIN -->
+      <main class="main">
+        <div class="header">
+            <div class="btn-top" >
+                <div class="col-6 mx-0 py-2 btn-change" >
+                    <div class="pt-2 btn-orders active  " >
+                         سفارش های فعال
+                    </div>
+         
+                </div>
+                 <div class="col-6 mx-0 py-2 btn-change" >
+                     <div class="pt-2 btn-orders" >
+                             سفارش های قبلی
+                     </div>
+                 </div>
+            </div>
+        </div>
+        
+
+       <!-- start content active-orders-->
+       <div class="order active" id="content-order">
+        <section class="category-product p-2 " id="new">
+              
+          </section>
+          <div class="col-12 p-2 content-wallet">
+            <div class="line"></div>
+            <!--start content wallet  -->
+              <section class="Wallet ">
+                <div class="col-12 ">
+                    <div class="Wallet-item p-2">
+                        <div class="col-12 item p-2">
+                            <div class="col-9 Wallet-credit">
+                                <div class="col-1 image">
+                                    <img src="./assets/images/wallet.png">
+                                </div>
+                                <div class="col-10 Validity p-1">
+                                    <div>
+                                        <span  id="text-etebar">اعتبار کیف پول</span>
+    
+                                    </div>
+                                    <div class="text">
+                                        <p><span class="text-etebar"></span> تومان</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3" style="display: flex;">
+                               <div class="desired-package" onclick="validate()">
+                                <label class="btn-package-desired">
+                                    <input class="inpute-checkbox" type="checkbox" id="check-input">
+                                    <span class="circle-in" id="small-circle"></span>
+                                    <span class="circle-out" id="circle-bironi"></span>
+                            
+                                </label>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-12 item p-2">
+                            <div class="col-7 Wallet-credit">
+                                <div class="col-1 image">
+                                    <img src="./assets/images/pic9.png">
+                                </div>
+                                <div class="col-10 Validity p-1">
+                                    <div class="text">
+                                        <span>کد تخفیف</span>
+    
+                                    </div>
+                                </div>
+                              
+                            </div>
+                            <div class="col-5" >
+                                <div class="code">
+                                    <div class="col-6 right p-1">
+                                       
+                                        <input type="text" name="value-code" id="check-code" placeholder="کد را وارد کنید">
+                                    </div>
+                                    <div class="col-6 left p-1">
+                                        <span>بررسی کد</span>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </section>
+             <!--end content wallet  -->
+            <div class="line"></div>
+             <!--start content list wallet  -->
+            <section class="list">
+                <div class="col-12 ">
+                    <div class="content-list p-2">
+                        <div class="col-12 p-2">
+                            <div class="list-item">
+                                <span>قیمت کالا ها</span>
+                                <p ><span id="total-price"></span>تومان</p>
+    
+                            </div>
+    
+                        </div>
+                        <div class="col-12 p-2">
+                            <div class="list-item">
+                                <span>تخفیف کالا ها</span>
+                                <span id="discount"></span>
+    
+                            </div>
+    
+                        </div>
+                        <div class="col-12 p-2">
+                            <div class="list-item credit" id="texts-etebar">
+                                <span >اعتبار کیف پول</span>
+    
+                                <p><span class="text-etebar"></span> تومان</p>
+                            </div>
+    
+                        </div>
+                        <div class="col-12 border-b p-2">
+                            <div class="list-item">
+                                <span>جمع سبد خرید</span>
+                                <span id="result"></span>
+    
+                            </div>
+    
+                        </div>
+                        <div class="col-12 p-2">
+                            <div class="list-item">
+                                <div class="col-5 kif-pol">
+                                    <img src="./assets/images/kifpol.png">
+                                    <span>کیف پول</span>
+    
+                                </div>
+                                <p><span class="text-etebar">860000</span> تومان</p>
+    
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </section>
+            <!--end content list wallet  -->
+          </div>
+          
+
+             <!-- start btn bottom -->
+             <div class="footer" >
+                <div class="row p-2 footer-item">
+                    <div class="col-5 col-md-2 col-sm-3 btn-bottom" >
+                        <div class=" p-1 text-btn" >
+                        <a href="Proceed-to-pay.html">
+                            اقدام به پرداخت
+                        </a>
+                        </div>
+
+                    </div>
+                    <div class=" col-3 col-md-2 g-0 txt-left" >
+                        <div>
+                            <p>جمع سبد خرید</p>
+                            <p id="result-2"></p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+             <!-- end btn bottom -->
+       </div>
+          
+           <!-- end content active-orders -->
+
+
+            <!-- start content Previous-orders -->
+            <div class="order">
+                <section class="Previous-orders w-100" id="paid-container">
+                   
+        
+                   </section>
+            </div>
+           
+              <!-- end content Previous-orders -->
+
+             
+               
+    
+    
+
+
+
+
+      
+      </main>
+
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="./assets/vendors/bootstrap.min.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="./assets/js/basket-shoping.js" type="module" ></script>
+  </body>
+</html>

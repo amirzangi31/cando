@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تیکت ها</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="../assets/vendors/bootstrap.min.css" />
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="../assets/vendors/swiper.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="../assets/styles/tickets.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body class="bg">
+   
+
+    <!-- START Header content tickets-->
+    <div class="container-fluid container-admin" style="position: relative">
+      <header class="header-m-oprator">
+        <div class="title">
+          <span class="back"
+            ><img src="../assets/images/icon/Group 1900.png" alt="icon"
+          /></span>
+          <h5>تیکت ها</h5>
+        </div>
+        <div class="The-dividing-line"></div>
+      </header>
+      <!--Edn Header content tickets-->
+
+      <!-- START MAIN -->
+      <main class="main p-2">
+        <!-- START BTNS  -->
+        <div class="btns">
+          <div class="btn-change col-6 text-center active" id="btn-birth">
+            تیکت های جدید
+          </div>
+          <div class="btn-change col-6 text-center" id="make-sweet">
+            همه تیکت ها
+          </div>
+        </div>
+        <!-- END BTNS  -->
+
+
+        <!-- START CONTENT new tickets  -->
+        <div class="content-tickets active">
+          <section class="content-items w-100">
+            <div
+              class="items-ersal w-100 d-flex flex-wrap"
+              id="content-answerd"
+            ></div>
+          </section>
+        </div>
+
+        <!-- End CONTENT new tickets  -->
+
+        <!-- START CONTENT all tickets  -->
+        <div class="content-tickets">
+          <section class="content-items w-100">
+            <div
+              class="items-ersal w-100 d-flex flex-wrap"
+              id="content-waiting"
+            ></div>
+          </section>
+        </div>
+
+        <!-- End CONTENT all tickets  -->
+      </main>
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="../assets/vendors/bootstrap.min.js"></script>
+
+    <!-- MAIN JS -->
+
+    <script src="../assets/js/admin/tickets.js" type="module"></script>
+  </body>
+</html>

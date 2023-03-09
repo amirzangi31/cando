@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اعلانات</title>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="./assets/vendors/bootstrap.min.css" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./assets/styles/Notification-page.css" />
+
+    <!-- AXIOS PACKAGE -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@persian-tools/persian-tools/build/persian-tools.umd.js"></script>
+
+  </head>
+
+  <body class="bg">
+    <!-- START Header notifications-pages-->
+    <div class="container-fluid container-admin" style="position: relative">
+      <header class="header-m-oprator">
+        <div class="title">
+          <span class="back"
+            ><img src="./assets/images/icon/Group 1900.png" alt="icon"
+          /></span>
+          <h5>اعلانات</h5>
+        </div>
+        <div class="The-dividing-line"></div>
+      </header>
+      <!-- START Header notifications-pages-->
+
+      <!-- START MENU-BOTTOM -->
+      <div class="menu-bottom">
+        <ul class="list-bottom">
+          <li class="item-bottom">
+            <a href="profile.html">
+              <img src="./assets/images/icon/users.png" alt="icon" />
+            </a>
+          </li>
+          <li class="item-bottom">
+            <a href="index.html">
+              <img src="./assets/images/icon/home.png" alt="icon" />
+            </a>
+          </li>
+          <li class="item-bottom">
+            <a href="basket-shoping.html">
+              <img src="./assets/images/icon/Bag.png" alt="icon" />
+            </a>
+          </li>
+          <li class="item-bottom">
+            <a href="instruction.html">
+              <img src="./assets/images/icon/hat.png" alt="icon" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- END MENU-BOTTOM -->
+
+      <!-- START MAIN -->
+      <main class="main p-3">
+        <!-- start btn top -->
+        <div class="btns p-2">
+          <div class="btn-notices col-6 text-center active ms-1">
+            اطلاع رسانی ها
+          </div>
+          <div class="btn-notices col-6 text-center">سفارشات</div>
+        </div>
+        <!-- end btn top -->
+
+        <!-- start content notices -->
+        <div class="content active">
+          <section class="Previous-orders w-100">
+            <!-- start -->
+            <div class="w-100" id="container-one">
+             
+              
+            </div>
+           <div class="w-100 py-2" style="border-bottom : 1px solid white ">
+            <div class="w-100" id="container-two">
+             
+            </div>
+            <div class="text-center">
+              <span class="btn btn-md text-white" style="background-color: #cd9b38;" id="btn-all-pay-1">پرداخت همه</span>
+            </div>
+           </div>
+            <div class="w-100 ">
+              <div class="w-100 " id="container-three">
+              
+               
+              </div>
+              <div class="text-center">
+                <span class="btn btn-md text-white" style="background-color: #cd9b38;" id="btn-all-pay-2">پرداخت همه</span>
+              </div>
+            </div>
+            
+          </section>
+        </div>
+        <!-- end content notices -->
+
+        <!-- start content orders -->
+        <div class="content">
+          <section class="Previous-orders w-100" id="container-four">
+            <!-- start -->
+           
+            
+          </section>
+          
+        </div>
+        <!-- start content orders -->
+      </main>
+    </div>
+
+    <!--BOOTSTRAP -->
+    <script src="./assets/vendors/bootstrap.min.js"></script>
+ <!-- SWEETALERT PACKAGE -->
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- MAIN JS -->
+
+    <script src="./assets/js/Notification-page.js" type="module"></script>
+  </body>
+</html>
