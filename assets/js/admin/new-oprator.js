@@ -1,4 +1,6 @@
-import { addOprator } from "../api.js";
+import { addOprator, validateLoginAdmin } from "../api.js";
+await validateLoginAdmin()
+
 /*----------------------add oprator frosh-------------------------*/
 const btn_add_frosh = document.querySelector("#btn-add-frosh");
 const nameF = document.querySelector("#name-f");

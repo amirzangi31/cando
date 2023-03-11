@@ -15,6 +15,7 @@ const renderPage = async () => {
 
   ticket_user.forEach(async(item, index) => {
     const reply = await GetTicketReply(+item.id)
+    console.log(item)
     const note = `
 <div class="item-all-ticket col-12 col-md-6 p-1 ">
                         <div class="item-ticket">
@@ -31,13 +32,12 @@ const renderPage = async () => {
                                 </div>
                             </div>
                             <div class="col-12 des-item p-2">
-                                ${reply.length ? `${reply[0].msg}` : "<span class='text-warning'>درحال بررسی</span>"}
+                                ${reply.length ? `${reply[0].message}` : "<span class='text-warning'>درحال بررسی</span>"}
                             </div>
                            
                           </div>
                         </div>
                       </div>`;
-
 
     container.innerHTML += note
   });

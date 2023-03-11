@@ -3,8 +3,11 @@ import {
   GetAllTicket,
   GetTicketReplyWithId,
   InsertTicketReply,
+  adminId,
   getUserWithId,
+  validateLoginAdmin,
 } from "../api.js";
+await validateLoginAdmin()
 
 const renderPage = async () => {
   const tickets = await GetAllTicket();
@@ -139,6 +142,10 @@ window.closeModal = (index) => {
 
 /*-----------------reply Modal-----------------*/
 
+
+const adminID = await adminId()
+
+
 window.replyTicket = async (id, index) => {
   var raw = "";
 
@@ -155,11 +162,11 @@ fetch("http://localhost/cando/cando/ticket/UpdateStatus.php?id=19", requestOptio
 
   const modals = document.querySelectorAll(".des")[index];
   const message = modals.value;
-
+  console.log(modals)
   const dataOne = {
     ticket_id: `${id}`,
     msg: message,
-    oprator_id: 1,
+    oprator_id: adminID,
   };
 
   const rr = await InsertTicketReply(dataOne);

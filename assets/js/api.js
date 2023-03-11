@@ -259,6 +259,13 @@ const validateLogin = async () => {
     window.location.replace("./log-in.html");
   }
 };
+const validateLoginAdmin = async () => {
+  const token = JSON.parse(window.localStorage.getItem("token-admin"));
+
+  if ([null, undefined, ""].includes(token)) {
+    window.location.replace("./log-in.html");
+  }
+};
 
 const getTokenLocal = async () => {
   const token = JSON.parse(window.localStorage.getItem("token"));
@@ -270,6 +277,12 @@ const userId = async () => {
   const user = await getUserWithToken(token);
   const userId = user[0].id;
   return userId;
+};
+const adminId = async () => {
+  const token = JSON.parse(window.localStorage.getItem("token-admin"));
+  const admin = await getUserWithToken(token);
+  const adminId = admin[0].id;
+  return adminId;
 };
 
 const getPath = async () => {
@@ -422,16 +435,16 @@ const deleteFavorite = async (id) => {
   return res.data;
 };
 
-const confirmPackage = async (id) => {
+const confirmPackage = async (id , deposit) => {
   const data = {
     id,
+    Deposit : deposit
   };
 
   const res = await axios.post(
-    `${BASE_URL}pakage/UpdateAcceptPakage.php`,
+    `${BASE_URL}pakage/UpdateAcceptDepositPakage.php`,
     data
   );
-  console.log(res.data);
   return res.data;
 };
 
@@ -447,12 +460,33 @@ const acceptAdminOrder = async (id) => {
     isAccept: "true",
   };
   const res = await axios.post(`${BASE_URL}order/UpdateAccept.php`, data);
-  
+
+  return res.data;
+};
+
+const acceptPayPackage = async (id) => {
+  const data = {
+    id,
+    pay: "true",
+  };
+  const res = await axios.post(`${BASE_URL}pakage/UpdatePay.php`, data);
+  return res.data;
+};
+
+const userAcceptOrder = async (id) => {
+  const data = {
+    id,
+    userAccept: "true",
+  };
+  const res = await axios.put(`${BASE_URL}order/UpdateUserAccept.php`, data);
   return res.data;
 };
 
 export {
   acceptAdminOrder,
+  userAcceptOrder,
+  acceptPayPackage,
+  validateLoginAdmin,
   deleteOrder,
   getPackageWithId,
   confirmPackage,
@@ -529,4 +563,5 @@ export {
   getAllWallet,
   getAllFavorite,
   adminWithToken,
+  adminId,
 };

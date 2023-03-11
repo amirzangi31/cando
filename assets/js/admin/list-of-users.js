@@ -1,5 +1,6 @@
-import { back, getAllUsers } from "../api.js";
+import { back, getAllUsers, validateLoginAdmin } from "../api.js";
 
+await validateLoginAdmin()
 
 
 

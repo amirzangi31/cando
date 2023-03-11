@@ -61,7 +61,7 @@ await renderPage();
 
 /*-------------------render Page------------------*/
 /*---------------------add to order---------------------*/
-
+const userID = await userId()
 window.addToOrder = async (id) => {
   const isOrder = await GetOrderWithUser(userID);
   const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
@@ -82,6 +82,8 @@ window.addToOrder = async (id) => {
       product_id: id,
       count: 1,
       type: "false",
+      package_id : null
+      
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -107,6 +109,8 @@ window.addToOrder = async (id) => {
         product_id: id,
         count: 1,
         type: "false",
+      package_id : null
+
       };
       await insertProductToOrder(product);
       successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");

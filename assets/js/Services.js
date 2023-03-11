@@ -179,19 +179,35 @@ const packageHandler = async (data) => {
 
 
 /*-----------------pay handler-----------------*/
-const payHandler = async () =>{
-  successAlert("error" , "لطفا ابتدا سبد خرید قبلی خود را تکمیل  یا حدف کنید")
-  window.scrollTo(0,0)
-  document.querySelector("#order").classList.add("active")
-  setTimeout(() => {
-    document.querySelector("#order").classList.remove("active")
-  }, 3000);
-}
+// const payHandler = async () =>{
+//   successAlert("error" , "لطفا ابتدا سبد خرید قبلی خود را تکمیل  یا حدف کنید")
+//   window.scrollTo(0,0)
+//   document.querySelector("#order").classList.add("active")
+//   setTimeout(() => {
+//     document.querySelector("#order").classList.remove("active")
+//   }, 3000);
+// }
 /*-----------------pay handler-----------------*/
 
 
+/*-----------------short text-----------------*/
+
+const shortText = (data , count)=>{
+  console.log(data)
+  const text = data.slice(0 , count)
+  console.log(text)
+  return text
+}
+
+
+/*-----------------short text-----------------*/
+
+
 export {
-  payHandler,
+  // payHandler,
+  shortText,
+
+  // payHandler,
   packageHandler,
   convertDate,
   showModal,

@@ -1,5 +1,6 @@
-import { convertHardship } from "../Services.js";
-import { addAmozesh, getAllArticle, uploadImage } from "../api.js";
+import { convertHardship, shortText } from "../Services.js";
+import { BASE_IAMGE, addAmozesh, getAllArticle, uploadImage, validateLoginAdmin } from "../api.js";
+await validateLoginAdmin()
 
 /*---------------------render Page-------------------*/
 const renderPage = async () => {
@@ -24,7 +25,7 @@ const renderPage = async () => {
                     <div class="sweat-name">${item.title}</div>
                     <div class="description">
                       <div class="description-item col-12">
-                        <span>${item.description}</span>
+                        <span>${ shortText(item.description , 150)}</span>
                       </div>
 
                       <div class="detiles">
@@ -60,19 +61,20 @@ const renderPage = async () => {
     containerA.innerHTML += note;
   });
 
-  article.forEach((item, index) => {
+  article.forEach(async(item, index) => {
+    console.log(item)
     const note = `
     <div class="col-12 col-md-6 p-2 pp">
     <div class="product-item">
       <div class="col-3 col-md-4 height">
-        <div class="img-product"><img src="../assets/images/pic4.png"
+        <div class="img-product"><img src="${BASE_IAMGE}${item.image}"
             alt=""></div>
       </div>
       <div class="col-6 col-md-5 moshakhaseh">
-        <div class="sweat-name">موضوع مقاله</div>
+        <div class="sweat-name">${item.title}</div>
         <div class="description">
           <div class="description-item col-12">
-            <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است...</span>
+            <span>${ shortText(item.description , 100)}</span>
           </div>
         </div>
       </div>

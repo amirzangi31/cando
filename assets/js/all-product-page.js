@@ -15,7 +15,7 @@ await validateLogin();
 
 /*-------------------------renderpage-----------------------------*/
 const allProducts = await GetAllProduct();
-const products = allProducts.filter(item => item.type === "sefareshi")
+const products = allProducts.filter((item) => item.type === "sefareshi");
 const renderPage = async () => {
   const container = document.querySelector("#container");
   const allCategory = await getAllCategories();
@@ -32,17 +32,24 @@ const renderPage = async () => {
                 alt=""></div>
           </div>
           <div>
-          <a href="./Each-product-page.html?${item.id}" class="col-4 col-md-4 moshakhaseh">
+          <a href="./Each-product-page.html?${
+            item.id
+          }" class="col-4 col-md-4 moshakhaseh">
             <div class="name-sweet">${item.title}</div>
             
           </a>
-          ${item.type === "sefareshi" && `<a href="./Points-to-product.html?${item.id}" class="text-white" >comment</a>`}
+          ${
+            item.type === "sefareshi" &&
+            `<a href="./Points-to-product.html?${item.id}" class="text-white" >comment</a>`
+          }
           </div>
           <div class="col-2 price">
             ${item.price}<br />هزارتومان
           </div>
           <div class="col-1 bbb">
-            <div class="cart " style="cursor : pointer" onclick="addToCart(${item.id},${item.discount})">
+            <div class="cart " style="cursor : pointer" onclick="addToCart(${
+              item.id
+            },${item.discount})">
               <img src="./assets/images/icon/cart.png" alt="">
             </div>
           </div>
@@ -64,7 +71,9 @@ window.addToCart = async (id, discount) => {
   const userID = await userId();
 
   const isOrder = await GetOrderWithUser(userID);
-  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+  const findOrderFalse = isOrder.find(
+    (item) => item.user_accept === "false" && item.isDelete === "false"
+  );
   let orderId = null;
   if (!findOrderFalse) {
     const data = {
@@ -81,7 +90,7 @@ window.addToCart = async (id, discount) => {
       product_id: id,
       count: 1,
       type: "false",
-
+      package_id: null,
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -91,16 +100,15 @@ window.addToCart = async (id, discount) => {
     const isProduct = productList.findIndex(
       (item) => item.product_id === `${id}`
     );
-    
-    if (isProduct !== -1 ) {
+
+    if (isProduct !== -1) {
       const id = productList[isProduct].id;
 
       const data = {
-        id
-      }
+        id,
+      };
 
-
-      const rr = await updateCount(id , data)
+      const rr = await updateCount(id, data);
       successAlert("success", "یکی به تعداد این محصول در سبد خرید اضافه شد");
     } else {
       const product = {
@@ -108,8 +116,8 @@ window.addToCart = async (id, discount) => {
         discount: discount,
         product_id: id,
         count: 1,
-      type: "false",
-
+        type: "false",
+        package_id: null,
       };
       await insertProductToOrder(product);
       successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");

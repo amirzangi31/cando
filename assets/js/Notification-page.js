@@ -1,4 +1,4 @@
-import { packageHandler, payHandler, successAlert } from "./Services.js";
+import { packageHandler, successAlert } from "./Services.js";
 import {
   BASE_IAMGE,
   GetAllProductList,
@@ -243,55 +243,55 @@ btns.forEach((item, index) => {
 // change content pakage active-orders and Previous-orders
 
 /*---------------------pay handler------------------------*/
-let orderId;
-window.payHandler = async (id, price) => {
-  const orders = await GetOrderWithUser(userID);
-  const isOrder = orders.findIndex((item) => item.user_accept === "false");
+// let orderId;
+// window.payHandler = async (id, price) => {
+//   const orders = await GetOrderWithUser(userID);
+//   const isOrder = orders.findIndex((item) => item.user_accept === "false");
 
-  if (isOrder !== -1) {
-    await payHandler();
-    return;
-  }
+//   if (isOrder !== -1) {
+//     await payHandler();
+//     return;
+//   }
 
-  const allPackage = await getAllPackage();
-  const packagee = allPackage.filter((item) => +item.id === +id);
+//   const allPackage = await getAllPackage();
+//   const packagee = allPackage.filter((item) => +item.id === +id);
 
-  const { image } = packagee[0];
-  /****--------------add to products----------------****/
-  const dataOne = {
-    title: "کیک تولد",
-    image,
-    count: 1,
-    price: price,
-    description: "more ... ",
-    category_id: 0,
-    discount: 0,
-    wallet: 100,
-    type: "bayane",
-  };
-  const rrr = await createProduct(dataOne);
-  /*****--------------add to products----------------*****/
+//   const { image } = packagee[0];
+//   /****--------------add to products----------------****/
+//   const dataOne = {
+//     title: "کیک تولد",
+//     image,
+//     count: 1,
+//     price: price,
+//     description: "more ... ",
+//     category_id: 0,
+//     discount: 0,
+//     wallet: 100,
+//     type: "bayane",
+//   };
+//   const rrr = await createProduct(dataOne);
+//   /*****--------------add to products----------------*****/
 
-  const data = {
-    user_id: userID,
-    discount_id: 0,
-    user_accept: false,
-    admin_accept: false,
-    status: 0,
-    type: "package",
-  };
-  orderId = await InsertOrder(data);
+//   const data = {
+//     user_id: userID,
+//     discount_id: 0,
+//     user_accept: false,
+//     admin_accept: false,
+//     status: 0,
+//     type: "package",
+//   };
+//   orderId = await InsertOrder(data);
 
-  window.localStorage.setItem("orderId", JSON.stringify(orderId));
-  const product = {
-    order_id: orderId,
-    discount: 0,
-    product_id: rrr,
-    count: 1,
-    type: "true",
-  };
-  await insertProductToOrder(product);
-  successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
-  window.location.replace("./basket-shoping.html?package");
-};
+//   window.localStorage.setItem("orderId", JSON.stringify(orderId));
+//   const product = {
+//     order_id: orderId,
+//     discount: 0,
+//     product_id: rrr,
+//     count: 1,
+//     type: "true",
+//   };
+//   await insertProductToOrder(product);
+//   successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
+//   window.location.replace("./basket-shoping.html?package");
+// };
 /*---------------------pay handler------------------------*/

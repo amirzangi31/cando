@@ -1,4 +1,6 @@
-import { BASE_IAMGE, GetAllProduct, createProduct, uploadImage } from "../api.js";
+import { shortText } from "../Services.js";
+import { BASE_IAMGE, GetAllProduct, createProduct, uploadImage, validateLoginAdmin } from "../api.js";
+await validateLoginAdmin()
 
 /*-------------------render Page---------------------*/
 const allProducts = await GetAllProduct()
@@ -48,7 +50,7 @@ products.forEach((item , index) => {
 
 const shContainer = document.querySelector("#container-sh")
 
-productsh.forEach((item , index) => {
+productsh.forEach(async(item , index) => {
   const note = `
   <div class="col-12 col-md-6 p-2 pp">
                 <div class="product-item">
@@ -193,8 +195,7 @@ btn_add_theme.addEventListener("click" , async() => {
 
 
   const ttt= await createProduct(data)
-  console.log(ttt)
-  // window.location.reload()
+  window.location.reload()
 })
 
 
@@ -222,7 +223,7 @@ btn_add_Sh.addEventListener("click" , async() => {
 
 
   await createProduct(data)
-  // window.location.reload()
+  window.location.reload()
 })
 
 

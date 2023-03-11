@@ -1,12 +1,12 @@
-import { getUserWithToken, updateUser, validateLogin } from "./api.js";
+import { getAddressWithId, getUserWithToken, updateUser, userId, validateLogin } from "./api.js";
 await validateLogin();
 
 /*-----------------------renderPage-------------------------*/
 
 const renderPage = async () => {
+  const userID = await userId()
   const user = await getUserWithToken();
   const contaienr = document.querySelector("#container");
-
   const { name, phone, id, password } = user[0];
 
   const note = `
@@ -98,6 +98,7 @@ window.update = async (id) => {
   };
 
   await updateUser(id, data);
+  window.location.reload()
 };
 
 /*-------------------update user---------------------*/

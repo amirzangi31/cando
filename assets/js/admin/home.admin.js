@@ -13,7 +13,11 @@ import {
   getUserWithId,
   insertProductToOrder,
   totalPriceOrder,
+  validateLoginAdmin,
 } from "../api.js";
+
+await validateLoginAdmin()
+
 
 /*-------------------------render Page----------------------------*/
 const allOrders = await getAllOrders();
@@ -188,10 +192,7 @@ const renderPage = async () => {
     const addressaa = await getAddressWithId(+item.user_id);
     const { address, postalcode, name, phone, id } = addressaa[0];
     const data = item.type === "pakage" && (await packageHandler(item.product));
-    // const date =item.type === "cake" ? item.created : null;
-    // const resultDate = moment(date, "YYYY/MM/DD")
-    //   .locale("fa")
-    //   .format("YYYY/MM/DD");
+    
     const cake = `
     <div class="col-12 right-item flex-column p-1">
           <div class="d-flex justify-content-between align-items-center py-1">
@@ -265,7 +266,7 @@ const renderPage = async () => {
           <div class="col-12">
               <div class="moshakhasat py-1">
                       <div class="col-12 txt-main p-2">
-                    <input type="number"  class="w-100 py-2 px-2 rounded-3 text-white" placeholder="تخمین قیمت" style="outline : 1px solid white   "  />
+                    <input type="number"  class="price-package  w-100 py-2 px-2 rounded-3 text-white" placeholder="تخمین قیمت" style="outline : 1px solid white   "  />
                       </div>
                       <div class="col-12 Total-price pt-1">
                           <div class="col-12 item-list p-1 text-white">
@@ -274,10 +275,11 @@ const renderPage = async () => {
                           </div>
                       </div>
                       <div class="col-12">
+                       
                         <sapn class="btn text-white btn-sm w-100" style="background : #cd9b38" onclick="${
                           item.type === "cake"
-                            ? `priceHandler(${item.id}, ${user[0].id})`
-                            : `priceHandlerOne(${item.id}, ${user[0].id})`
+                            ? `priceHandler(${item.id}, ${user[0].id},${index})`
+                            : `priceHandlerOne(${item.id}, ${user[0].id},${index})`
                         }">آماد سازی و ثبت قیمت</sapn>
                       </div>
                   </div>
@@ -331,6 +333,9 @@ const renderPage = async () => {
                     </div>
                     <div class="up p-2">
                     </div>
+                    ${
+                      item.accept === "true" ? "amir" : "reza"
+                    }
                     <div class="information bg-color" style="cursor : pointer" onclick="showModalHandler(${index})">تخمین قیمت وآماده سازی</div>
                     </div>
                 </div>
@@ -555,8 +560,11 @@ window.closeModalReq = (index) => {
 
 
 /*-------------------price handler------------------*/
-window.priceHandler = async (id, user) => {
-  await confirmPackage(id);
+window.priceHandler = async (id, user,index) => {
+  const pricePackage = document.querySelectorAll(".price-package")
+  const price = pricePackage[index].value
+  
+  await confirmPackage(id , price);
 
   const all = await getAllPackage();
   const pa = all.filter((item) => item.id == id);
@@ -615,9 +623,12 @@ window.priceHandler = async (id, user) => {
     await insertProductToOrder(product);
     // successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
   }
+  window.location.reload()
 };
-window.priceHandlerOne = async (id, user) => {
-  await confirmPackage(id);
+window.priceHandlerOne = async (id, user,index) => {
+  const pricePackage = document.querySelectorAll(".price-package")
+  const price = pricePackage[index].value
+  await confirmPackage(id , price);
 
   const all = await getAllPackage();
   const pa = all.filter((item) => item.id == id);
@@ -676,6 +687,8 @@ window.priceHandlerOne = async (id, user) => {
     await insertProductToOrder(product);
     // successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
   }
+  window.location.reload()
+
 };
 /*-------------------price handler------------------*/
 
@@ -688,3 +701,11 @@ window.confirmRequest = async(id , user) =>{
 }
 
 /*-----------------confirmReq handler--------------------*/
+
+
+/*----------------exit handler-------------------*/
+const exitAdmin = document.querySelector("#exit")
+exitAdmin.addEventListener("click" , () => {
+  window.localStorage.removeItem("token-admin")
+})
+/*----------------exit handler-------------------*/

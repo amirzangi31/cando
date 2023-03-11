@@ -1,4 +1,5 @@
-import { getAllOprator } from "../api.js";
+import { getAllOprator, validateLoginAdmin } from "../api.js";
+await validateLoginAdmin()
 
 /*---------------rendre page--------------------*/
 const allOprator = await getAllOprator()

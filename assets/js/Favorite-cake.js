@@ -219,6 +219,7 @@ btnSend.addEventListener("click", async () => {
       product_id: rrr,
       count: 1,
       type: "true",
+      package_id : pakageId
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -235,10 +236,12 @@ btnSend.addEventListener("click", async () => {
       product_id: rrr,
       count: 1,
       type: "true",
+      package_id : pakageId
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
   }
 
   /*****--------------add to order----------------*****/
+  window.location.reload()
 });

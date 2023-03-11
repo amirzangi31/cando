@@ -24,7 +24,7 @@ btn_login.addEventListener("click", async (e) => {
     btn_login.removeAttribute("disabled");
     btn_login.style.opacity = "1";
   }
-  window.localStorage.setItem("token-admin" , result.token)
+  window.localStorage.setItem("token-admin" , JSON.stringify(result.token))
   if (admin[0].type === "admin") {
 
     console.log("admin");

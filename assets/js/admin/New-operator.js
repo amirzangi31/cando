@@ -1,3 +1,8 @@
+import { validateLoginAdmin } from "../api.js";
+
+await validateLoginAdmin()
+
+
 /*------------------on and off desired-package  ------------------- */
 function validate(){
   var checkbox=document.getElementById("check-input");

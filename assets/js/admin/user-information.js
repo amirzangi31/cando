@@ -7,7 +7,9 @@ import {
   getPath,
   getUserWithId,
   totalPriceOrder,
+  validateLoginAdmin,
 } from "../api.js";
+await validateLoginAdmin()
 
 /*------------------render Page--------------------*/
 const path = await getPath();

@@ -1,13 +1,16 @@
 // import {} from "./api.js"
 
+import { successAlert } from "./Services.js";
 import {
   BASE_IAMGE,
   GetAllProductList,
   GetOrderWithUser,
+  acceptPayPackage,
   getAddressWithId,
   getAllDeposit,
   getPackageWithId,
   totalPriceOrder,
+  userAcceptOrder,
   userId,
   validateLogin,
 } from "./api.js";
@@ -16,7 +19,9 @@ await validateLogin();
 /*-----------------render page-------------------*/
 const userID = await userId();
 const allOrders = await GetOrderWithUser(+userID);
-const noPayment = allOrders.filter((item) => item.user_accept === "false"&& item.isDelete === "false");
+const noPayment = allOrders.filter(
+  (item) => item.user_accept === "false" && item.isDelete === "false"
+);
 const renderPage = async () => {
   const containerProducts = document.querySelector("#products");
 
@@ -29,14 +34,15 @@ const renderPage = async () => {
 
   noPayment.forEach(async (item, index) => {
     const productList = await GetAllProductList(+item.id);
-   
-    
+
     productList.forEach((item) => {
-      const price = +item.price
+      const price = +item.price;
       const note = `
          <div class="col-12 col-md-6 p-1">
          <div class=" py-1 px-2 content-up-page-item border rounded-1">
-         <img src="${BASE_IAMGE}${item.image}" style="width : 100px ; height : 100px" /> 
+         <img src="${BASE_IAMGE}${
+        item.image
+      }" style="width : 100px ; height : 100px" /> 
         <div class="d-flex justify-content-between align-items-center flex-column">
           <span>${item.name}</span>
           <span>${price.toLocaleString()}تومان</span>
@@ -223,3 +229,26 @@ overalyModals.addEventListener("click", (e) => {
   }
 });
 /*------------------show and close modal-submit time ------------------- */
+
+/*----------------pay order -------------------*/
+const btnPay = document.querySelector("#btn-pay");
+
+btnPay.addEventListener("click", async() => {
+  const { id } = noPayment[0];
+  const products = await GetAllProductList(id);
+  const packages = products.filter(
+    (item) => item.type === "true" && item.typeProduct === "bayane"
+  );
+  if(packages.length){
+    packages.forEach(async (item) => {
+      const tt = await acceptPayPackage(item.package_id);
+      console.log(tt)
+    });
+  }
+  const rr = await userAcceptOrder(id)
+  console.log(rr)
+  successAlert("success" , "پرداخت با موفقیت انجام شد")
+  
+});
+
+/*----------------pay order -------------------*/

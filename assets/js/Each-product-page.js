@@ -24,7 +24,9 @@ const allDeposit = await getAllDeposit();
 const { cake } = allDeposit[0];
 
 const allComments = await getAllComment();
-const commentsProduct = allComments.filter(item =>  item.product_id === `${path}` && item.accepted === "1")
+const commentsProduct = allComments.filter(
+  (item) => item.product_id === `${path}` && item.accepted === "1"
+);
 
 const renderPage = async () => {
   const headerContainer = document.querySelector("#header");
@@ -78,10 +80,9 @@ const renderPage = async () => {
 
   const commentContainer = document.querySelector("#comment");
 
-  commentsProduct.forEach(async(item, index) => {
-
-    const user = await getUserWithId(item.id)
-    const {name} = user[0]
+  commentsProduct.forEach(async (item, index) => {
+    const user = await getUserWithId(item.id);
+    const { name } = user[0];
     const note = `  <div class="col-12 comments-cotent p-2 py-3">
     <div class="col-1 img">
         <img src="./assets/images/yyyyyy.png">
@@ -112,7 +113,7 @@ const renderPage = async () => {
 
 </div>`;
 
-    commentContainer.innerHTML += note;;
+    commentContainer.innerHTML += note;
   });
 };
 
@@ -249,14 +250,15 @@ btns.forEach((item, index) => {
   });
 });
 
-
 /*-----------------add to order-------------------*/
-const btn_add_order = document.querySelector("#add-to-order")
+const btn_add_order = document.querySelector("#add-to-order");
 const userID = await userId();
 
-btn_add_order.addEventListener("click" , async() => {
+btn_add_order.addEventListener("click", async () => {
   const isOrder = await GetOrderWithUser(userID);
-  const findOrderFalse = isOrder.find((item) => item.user_accept === "false" && item.isDelete === "false");
+  const findOrderFalse = isOrder.find(
+    (item) => item.user_accept === "false" && item.isDelete === "false"
+  );
 
   let orderId = null;
   if (!findOrderFalse) {
@@ -274,6 +276,7 @@ btn_add_order.addEventListener("click" , async() => {
       product_id: path,
       count: 1,
       type: "false",
+      package_id: null,
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -287,7 +290,7 @@ btn_add_order.addEventListener("click" , async() => {
       const id = productList[isProduct].id;
 
       const data = {
-        id : path,
+        id: path,
       };
 
       const rr = await updateCount(id, data);
@@ -299,12 +302,12 @@ btn_add_order.addEventListener("click" , async() => {
         product_id: path,
         count: 1,
         type: "false",
+        package_id: null,
       };
       await insertProductToOrder(product);
       successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
     }
   }
-})
-
+});
 
 /*-----------------add to order-------------------*/

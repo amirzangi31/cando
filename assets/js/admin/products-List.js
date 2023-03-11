@@ -5,7 +5,9 @@ import {
   getAllCategories,
   GetAllProduct,
   uploadImage,
+  validateLoginAdmin,
 } from "../api.js";
+await validateLoginAdmin()
 
 /*----------------render Page----------------*/
 

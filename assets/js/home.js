@@ -8,12 +8,10 @@ import {
   GetAllProductList,
   getAllCategories,
   insertProductToOrder,
-  getUserWithToken,
   validateLogin,
   userId,
   exit,
   updateCount,
-  getAllFavorite,
   addFavorite,
   getAllProductsFavoriteWithId,
 } from "./api.js";
@@ -336,6 +334,7 @@ window.addToCart = async (id, discount) => {
       product_id: id,
       count: 1,
       type: "false",
+      package_id : null
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -361,6 +360,7 @@ window.addToCart = async (id, discount) => {
         product_id: id,
         count: 1,
         type: "false",
+        package_id : null
       };
       await insertProductToOrder(product);
       successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -381,7 +381,7 @@ heart.forEach((item) => {
 const btnsCategory = document.querySelectorAll(".group-item");
 
 const data = await GetAllProduct();
-
+const allData = data.filter(item => item.type === "sefareshi")
 const productRender = (products) => {
   document.querySelector("#description").innerHTML = "";
   document.querySelector("#product").innerHTML = "";
@@ -451,7 +451,7 @@ btnsCategory.forEach((item, index) => {
     const filterData = data.filter((item) => item.category_id === id);
     const newData = filterData.slice(0, 10);
     if (id === "all") {
-      productRender(data);
+      productRender(allData);
     } else {
       productRender(newData);
     }

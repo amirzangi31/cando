@@ -1,4 +1,4 @@
-import { convertHardship } from "./Services.js";
+import { convertHardship, shortText } from "./Services.js";
 import { getAllArticle, validateLogin } from "./api.js";
 await validateLogin();
 
@@ -15,7 +15,6 @@ const renderPage = async () => {
   const containerA = document.querySelector("#content-amozesh");
   const containerM = document.querySelector("#container");
   amozesh.forEach(async(item , index) => {
-    console.log(item)
     const note  = `<div class="col-12 col-md-6 p-2 pp">
     <div class="instruction-item">
       <div class="col-4 col-md-4 height">
@@ -26,7 +25,7 @@ const renderPage = async () => {
         <div class="name-instruction">${item.title}</div>
         <a href="#">
           <div class="the-description">
-          ${item.description}
+          ${await shortText(item.description , 100)}
           </div>
         </a>
         <div class="detiles">
@@ -73,7 +72,7 @@ const renderPage = async () => {
           <div class="contente-txt">
             <h5>${article[item].title}</h5>
             <span>
-            ${article[item].description}
+            ${shortText(article[item].description , 100)}
            </span>
             <div class="img-b">
               <a href="Article.html?${article[item].id}"><img src="./assets/images/bottom-f.png"></a>

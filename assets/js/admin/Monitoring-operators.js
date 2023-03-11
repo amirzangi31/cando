@@ -1,3 +1,8 @@
+import { validateLoginAdmin } from "../api.js";
+
+
+await validateLoginAdmin()
+
 // change content orders and  Add product
 
 let btns = document.querySelectorAll(".btn-change");

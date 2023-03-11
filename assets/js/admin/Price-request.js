@@ -10,7 +10,9 @@ import {
   getAllPackage,
   getUserWithId,
   insertProductToOrder,
+  validateLoginAdmin,
 } from "../api.js";
+await validateLoginAdmin()
 
 /*--------------render page------------------*/
 const getAllPackageo = await getAllPackage();
@@ -36,7 +38,7 @@ const renderPage = async () => {
       .format("YYYY/MM/DD");
     const type = "cake"
     const note = `
-    <div class="content-modals modal-takhmin">
+    <div class="content-modals modal-takhmin ">
             <div class="inner-modals"  style="z-index : -1">
 
                  <div class="contents">
@@ -68,7 +70,7 @@ const renderPage = async () => {
                   <div class="col-12">
                       <div class="moshakhasat py-1">
                               <div class="col-12 txt-main p-2">
-                            <input type="number"  class="w-100 py-2 px-2 rounded-3 text-white" placeholder="تخمین قیمت" style="outline : 1px solid white   "  />
+                            <input type="number"  class="modal-cake w-100 py-2 px-2 rounded-3 text-white" placeholder="تخمین قیمت" style="outline : 1px solid white   "  />
                               </div>
                               <div class="col-12 Total-price pt-1">
                                   <div class="col-12 item-list p-1 text-white">
@@ -79,7 +81,7 @@ const renderPage = async () => {
                               <div class="col-12">
                                 <sapn class="btn text-white btn-sm w-100" style="background : #cd9b38" onclick="priceHandler(${
                                   item.id
-                                } , ${user[0].id}  )">آماد سازی و ثبت قیمت</sapn>
+                                } , ${user[0].id} ,${index}  )">آماد سازی و ثبت قیمت</sapn>
                               </div>
                           </div>
                       </div>
@@ -246,7 +248,7 @@ const renderPage = async () => {
     const data = await packageHandler(item.product);
 
     const note = `
-    <div class="content-modals modal-takhmins">
+    <div class="content-modals modal-takhmins  ">
     <div class="inner-modals" onclick="closeHandler(${index})" style="z-index : -1">
          <div class="contents">
          <div class="px-2">
@@ -277,7 +279,7 @@ const renderPage = async () => {
           <div class="col-12">
               <div class="moshakhasat py-1">
                       <div class="col-12 txt-main p-2">
-                    <input type="number"  class="w-100 py-2 px-2 rounded-3 text-white" placeholder="تخمین قیمت" style="outline : 1px solid white   "  />
+                    <input type="number"  class="modal-jabeh w-100 py-2 px-2 rounded-3 text-white" placeholder="تخمین قیمت" style="outline : 1px solid white   "  />
                       </div>
                       <div class="col-12 Total-price pt-1">
                           <div class="col-12 item-list p-1 text-white">
@@ -288,7 +290,7 @@ const renderPage = async () => {
                       <div class="col-12">
                         <sapn class="btn text-white btn-sm w-100" style="background : #cd9b38" onclick="priceHandlerOne(${
                           item.id
-                        }, ${user[0].id} )">آماد سازی و ثبت قیمت</sapn>
+                        }, ${user[0].id} , ${index} )">آماد سازی و ثبت قیمت</sapn>
                       </div>
                   </div>
               </div>
@@ -432,9 +434,12 @@ window.closeHandlerOne = (index) => {
 
 
 /*-----------------priceHandler -------------------- */
-window.priceHandler = async (id , user , type) => {
-    
-  await confirmPackage(id);
+window.priceHandler = async (id , user , index) => {
+  const modals= document.querySelectorAll(".modal-cake")
+  const price = modals[index].value
+
+
+    await confirmPackage(id , price);
 
   const all = await getAllPackage() 
   const pa = all.filter(item => item.id == id)
@@ -494,14 +499,19 @@ window.priceHandler = async (id , user , type) => {
     // successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
   }
 
-//   window.location.reload();
+  window.location.reload();
 };
 /*-----------------priceHandler -------------------- */
 
 /*-----------------priceHandlerOne -------------------- */
-window.priceHandlerOne = async (id , user , type) => {
+window.priceHandlerOne = async (id , user , index) => {
     
-    await confirmPackage(id);
+  const modals= document.querySelectorAll(".modal-jabeh")
+  const price = modals[index].value
+
+
+
+    await confirmPackage(id , price);
   
     const all = await getAllPackage() 
     const pa = all.filter(item => item.id == id)

@@ -5,7 +5,10 @@ import {
   getAllComment,
   getUserWithId,
   updateComment,
+  validateLoginAdmin,
 } from "../api.js";
+await validateLoginAdmin()
+
 /*--------------------render page---------------------*/
 
 const allComments = await getAllComment();

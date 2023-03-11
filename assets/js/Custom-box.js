@@ -13,7 +13,7 @@ import {
   userId,
   validateLogin,
 } from "./api.js";
-import { successAlert } from "./Services.js";
+import { shortText, successAlert } from "./Services.js";
 await validateLogin();
 
 /* ------------------change img and content--------------------- */
@@ -78,7 +78,7 @@ const renderPage = () => {
         <div class="name-product">${item.title}</div>
         <div class="ajza">
           <div class="ajzaitem col-6">
-            <span>${item.description}</span>
+            <span>${shortText(item.description , 50)}...</span>
           </div>
         </div>
       </div>
@@ -254,6 +254,7 @@ btnAddToCart.addEventListener("click", async () => {
       product_id: rrr,
       count: 1,
       type: "true",
+      package_id : pakageId
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -279,12 +280,15 @@ btnAddToCart.addEventListener("click", async () => {
         product_id: rrr,
         count: 1,
         type: "true",
+        package_id : pakageId
       };
       await insertProductToOrder(product);
       successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
     }
   }
   /*****--------------add to order----------------*****/
+
+  window.location.reload()
 });
 
 window.changeHandler = (id) => {
@@ -330,6 +334,7 @@ window.addToCartTheme = async (id) => {
       product_id: id,
       count: 1,
       type: "false",
+      package_id : null
     };
     await insertProductToOrder(product);
     successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");
@@ -355,6 +360,7 @@ window.addToCartTheme = async (id) => {
         product_id: id,
         count: 1,
         type: "false",
+        package_id : null
       };
       await insertProductToOrder(product);
       successAlert("success", "محصول با موفقیت به سبد خرید اضافه شد");

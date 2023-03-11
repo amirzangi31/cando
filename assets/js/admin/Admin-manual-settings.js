@@ -1,4 +1,8 @@
-import { getAllDispoit, getWallet, updateDeposit, updateWallet } from "../api.js";
+import { getAllDispoit, getWallet, updateDeposit, updateWallet, validateLoginAdmin } from "../api.js";
+
+
+await validateLoginAdmin()
+
 
 /*---------------------render page -----------------------*/
 const allDispoit = await getAllDispoit();
@@ -163,7 +167,7 @@ window.depositHandler = async() => {
     }
 
      const rrr = await updateDeposit(data)
-     console.log(rrr)
+     window.location.reload()
 }
 /*---------------------- deposit handler -----------------------*/
 
@@ -178,6 +182,7 @@ window.sendHandler = async() => {
         normal: normal.value
     }
     const rrr= await updateDeposit(data)
+    window.location.reload()
 }
 /*---------------------- send handler -----------------------*/
 
@@ -191,6 +196,6 @@ window.walletHandler = async() => {
     }
 
     const rrr = await updateWallet(data)
-    console.log(rrr)
+    window.location.reload()
 }
 /*---------------------- wallet handler -----------------------*/

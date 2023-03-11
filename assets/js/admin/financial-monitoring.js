@@ -1,4 +1,5 @@
-import { GetAllProductList, getAllOrders, getUserWithId, totalPriceOrder } from "../api.js";
+import { GetAllProductList, getAllOrders, getUserWithId, totalPriceOrder, validateLoginAdmin } from "../api.js";
+await validateLoginAdmin()
 
 /*---------------render page------------------*/
 const allOrders = await getAllOrders();
