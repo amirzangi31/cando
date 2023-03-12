@@ -7,6 +7,7 @@ import {
   confirmPackage,
   createProduct,
   getAddressWithId,
+  getAdminWithId,
   getAllDeposit,
   getAllOrders,
   getAllPackage,
@@ -36,10 +37,31 @@ const sliderTwo = allOrders.filter(
 );
 
 const allPackage = await getAllPackage();
+
 const sliderThree = allPackage.filter(
   (item) => item.pay === "true" && item.accept === "false"
 );
+
+
+const sliderFour = allPackage.filter(item => item.pay = "true" && item.accept === "true");
+
 const renderPage = async () => {
+  const admin = await getAdminWithId()
+  
+  /**name admin */
+  const nameAdmin = document.querySelector("#name-admin")
+
+  nameAdmin.innerHTML = admin.name
+  /**name admin */
+
+
+
+
+
+
+
+
+
   /**slider one */
   const containerOne = document.querySelector("#container-one");
   sliderOne.forEach(async (item, index) => {
@@ -346,6 +368,104 @@ const renderPage = async () => {
   });
 
   /**slider three */
+
+
+
+  /**slider four */
+  const containerFour = document.querySelector("#container-four")
+  sliderFour.forEach(async(item , index) => {
+    const price = +item.Deposit
+    const cakeDeposit = +allDeposit[0].cake
+    const packageDeposit = +allDeposit[0].package
+    const products =item.type === "pakage" && await packageHandler(item.product)
+    
+    
+    const note = `
+    ${item.type === "cake" ? `<div class="swiper-slide">
+    <div
+      class="item-darkhast-moshavereh item-list-1 item-list-gh p-0"
+    >
+      <div class="content-item-o-p down p-2">
+        <!-- start title -->
+        <div class="col-12 title p-1">
+          <span>تایید و تخمین قیمت-نام اپراتور</span>
+        </div>
+        <!-- start item -->
+        <div class="right col-12">
+          <div class="col-12 right-item p-1">
+            <span>کیک دلخواه</span>
+          </div>
+          <div class="col-12 right-item p-1">
+            <span>وزن:${item.Weight}کیلو گرم</span>
+          </div>
+          <div class="col-12 right-item p-1">
+            <span>فیلینگ:${item.filling}</span>
+          </div>
+          <div class="col-12 right-item p-1">
+            <span>اسفنج کیک:${item.taste_cake}</span>
+          </div>
+          <div class="col-12 right-item p-1 border-bottom">
+            <span>طعم خامه:${item.taste_cream}</span>
+          </div>
+          <div class="col-12 right-item p-1">
+            <span>بیعانه</span>
+            <span>${cakeDeposit.toLocaleString()}تومان</span>
+          </div>
+          <div class="col-12 right-item p-1">
+            <span>تخمین قیمت نهایی</span>
+            <span>${price.toLocaleString()}تومان</span>
+          </div>
+        </div>
+      </div>
+      <div class="up p-4"></div>
+    </div>
+  </div>` : `
+  <div class="swiper-slide">
+    <div
+      class="item-darkhast-moshavereh item-list-1 item-list-gh p-0"
+    >
+      <div class="content-item-o-p down p-2">
+        <!-- start title -->
+        <div class="col-12 title p-1">
+          <span>تایید و تخمین قیمت-نام اپراتور</span>
+        </div>
+        <!-- start item -->
+        <div class="right col-12">
+          <div class="col-12 right-item p-1">
+            <span>کیک دلخواه</span>
+          </div>
+         ${
+          Object.keys(products).map((pro , index) => {
+            const {name} = products[pro]
+            return `
+            <div class="col-12 right-item p-1 ${index === products.length - 1 ? 'border-bottom' : ""}">
+                <span>ردیف ${index + 1}</span>
+                <span>${name}</span>
+            </div>
+            `
+
+          }).join("")
+         }
+         <div class="col-12 right-item p-1">
+         <span>بیعانه</span>
+         <span>${packageDeposit.toLocaleString()}تومان</span>
+       </div>
+         
+          <div class="col-12 right-item p-1">
+            <span>تخمین قیمت نهایی</span>
+            <span>${price.toLocaleString()}تومان</span>
+          </div>
+        </div>
+      </div>
+      <div class="up p-4"></div>
+    </div>
+  </div>`}
+    `
+    containerFour.innerHTML += note
+  })
+
+  /**slider four */
+
 };
 
 await renderPage();

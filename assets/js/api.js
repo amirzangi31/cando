@@ -397,6 +397,14 @@ const adminWithToken = async (data) => {
   return res.data;
 };
 
+const getAdminWithId = async() => {
+  const token = JSON.parse(window.localStorage.getItem("token-admin"))
+  const res =await axios(`${BASE_URL}admin/GetWithToken.php?token=${token}`)
+  const admin = res.data[0]
+  return admin
+}
+
+
 const LoginAdmin = async (data) => {
   const res = await axios.post(`${BASE_URL}admin/Login.php`, data);
   return res.data;
@@ -517,6 +525,7 @@ export {
   GetProductWithId,
   GetOrderWithUser,
   GetWithToken,
+  getAdminWithId,
   updateTicket,
   GetWalletWithToken,
   InsertTicket,

@@ -13,9 +13,11 @@ await validateLoginAdmin()
 
 const allComments = await getAllComment();
 
+
+
+
 const renderPage = async () => {
   const container = document.querySelector("#container");
-
   allComments.forEach(async (item, index) => {
     const product = await GetProductWithId(item.product_id);
     const { title, image } = product[0];
@@ -35,6 +37,7 @@ const renderPage = async () => {
             <div class="col-8 p-1">
               <div class="col-12 user-name">
                 <span>${name}</span>
+                <span class="text-success">${item.accepted === "1" ? "(در حال نمایش)" : ""}</span>
               </div>
               <div class="detail ">
                 <span class="des-comment">${item.description}</span>
@@ -68,17 +71,19 @@ window.confirmHanlder = async (id, product_id , userid  , index ) => {
 
   const des = document.querySelectorAll(".des-comment")[index]
   
+
   const data ={
-    id ,
-    product_id,
-    user_id : userid,
-    accepted : 1,
+    id : `${id}`,
+    product_id : `${product_id}`,
+    user_id : `${userid}`,
+    accepted : "1",
     description : des.innerHTML
   }
 
-
-  await updateComment(id , data)
-  window.location.reload()
+  
+  const tt = await updateComment(id , data)
+  console.log(tt)
+  // window.location.reload()
 };
 
 /*----------------confirm handler--------------------*/
